@@ -10,7 +10,8 @@ This repository is organized with the following folder structure:
 ├── deliverable/
 |   ├── 1/
 |   |   └── src/
-|   |       ├── agreement.tex
+|   |       ├── contract.tex
+|   |       ├── structure.tex
 |   |       └── team_picture.jpg
 |   |
 |   └── 2/
