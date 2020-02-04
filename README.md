@@ -2,11 +2,11 @@
 
 ## Meet the Team!
 
-* Joe Armitage: [Email](joe.armitage@mail.utoronto.ca) [Github](https://github.com/armitag8)
-* Jacob Chamberlain: [Email](jacob.chamberlain@mail.utoronto.ca) [Github](https://github.com/JacobChamberlain)
-* Saba Kiaei: [Email](saba.kiaei@mail.utoronto.ca ) [Github](https://github.com/sabulikia)
-* Fides Linga: [Email](fides.linga@mail.utoronto.ca ) [Github](https://github.com/desslinga)
-* Angela Zavaleta: [Email](angela.zavaletabernuy@mail.utoronto.ca) [Github](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+* Joe Armitage:         [Email](joe.armitage@mail.utoronto.ca) [Github](https://github.com/armitag8)
+* Jacob Chamberlain:    [Email](jacob.chamberlain@mail.utoronto.ca) [Github](https://github.com/JacobChamberlain)
+* Saba Kiaei:           [Email](saba.kiaei@mail.utoronto.ca) [Github](https://github.com/sabulikia)
+* Fides Linga:          [Email](fides.linga@mail.utoronto.ca) [Github](https://github.com/desslinga)
+* Angela Zavaleta:      [Email](angela.zavaletabernuy@mail.utoronto.ca) [Github](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ## Deliverables
 
