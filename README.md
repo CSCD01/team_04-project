@@ -1,10 +1,21 @@
-# CSCD01 Final Project
+# Team Mozzarella's CSCD01 Final Project
+
+## Meet the Team!
+
+* Joe Armitage: [Email](joe.armitage@mail.utoronto.ca) [Github](https://github.com/armitag8)
+* Jacob Chamberlain: [Email](jacob.chamberlain@mail.utoronto.ca) [Github](https://github.com/JacobChamberlain)
+* Saba Kiaei: [Email](saba.kiaei@mail.utoronto.ca ) [Github](https://github.com/sabulikia)
+* Fides Linga: [Email](fides.linga@mail.utoronto.ca ) [Github](https://github.com/desslinga)
+* Angela Zavaleta: [Email](angela.zavaletabernuy@mail.utoronto.ca) [Github](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+## Deliverables
+
+0. [Deliverable 0](https://github.com/CSCD01/team_04-project/tree/master/deliverable/0)
 
 ## Organization
 
-This repository is organized with the following folder structure:
-
-``` 
+This project is organized in the following way
+```
 /
 ├── .gitignore
 ├── deliverable/
@@ -18,4 +29,3 @@ This repository is organized with the following folder structure:
 |       └── src/
 └── README.md
 ```
-
