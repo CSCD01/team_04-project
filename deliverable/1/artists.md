@@ -23,5 +23,5 @@ Composites can contain other composite objects, or primitive objects.
 - `Tick` (which are contained in `Axis`). 
 - `Axes`, which is composed of most other `Artist` objects such as `Line2D`, `Text`, `Axis` (`YAxis` and `XAxis`), and `Patch`
 
-![Drag Racing](./img/UML_Artist_Layer.svg)
+![Artist Layer UML](./img/UML_Artist_Layer.svg)
 
