@@ -6,7 +6,7 @@ Pyplot allows the Scripting Layer to act as a wrapper of the Artist and Backend 
 
 The user can either work with the Artist and Backend Layers directly or use the Scripting Layer instead, where they do not need to initialize figures or specify their preferred backend. Pyplot will select the default backend (or the previously configured one) and call a `setup()` method that will initialize the appropriate objects needed given the selected backend (interactive or hardcopy) .
 
-The pyplot interface provides the following functions (non-exhaustive) to manage the components returned by the `setup()` method’.
+The pyplot interface provides the following functions (non-exhaustive) to manage the components returned by the `setup()` method:
 
 ### Artist Layer wrappers
 
@@ -20,7 +20,7 @@ The pyplot interface provides the following functions (non-exhaustive) to manage
 ### Backend Layer wrappers
 - `draw()`: redraws the current `Figure`
 - `get_current_fig_manager()`: returns the current  `FigureManager`
-- `switch_backend()`: allows the user to change the selected backend.
+- `switch_backend()`: allows the user to change the selected backend
 - `show()`: displays all figures.
 
 ![Scripting Layer UML](./img/UML_Scripting_Layer.svg)
