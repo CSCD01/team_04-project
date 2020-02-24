@@ -2,7 +2,7 @@
 
 The Artist Layer defines modular visual components that are used in Figures.
 
-`Artist`: this serves as the base class of all artists. The code resides [here](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/artist.py). The `Artist` object uses the `renderer` (an implementation of `RendererBase`) to draw on the `FigureCanvas`. The `Artist` will relate its coordinate system with the canvas’ and indicate where the object can be drawn. It converts the abstract representation of the object to an actual drawing for the user. 
+`Artist`: this serves as the parent class of all artists. The code resides [here](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/artist.py). The coupling between the Artist layer and the Backend layer happen through the draw method in which the `Artist` object uses the `renderer` (an implementation of `RendererBase`) to draw on the `FigureCanvas`. The `Artist` will relate its coordinate system with the canvas’ and indicate where the object can be drawn. It converts the abstract representation of the object to an actual drawing for the user. 
 
 There are both primitive and composite implementations of `Artist` classes.
 
