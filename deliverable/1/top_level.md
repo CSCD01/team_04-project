@@ -13,3 +13,5 @@ The architecture of matplot lib consists of three stacked up layers. The encapsu
 3. [**Scripting Layer**](./scripting.md)
 
     The highest level of the stack. This layer provides a simple and clean scripting interface to allow programmatic manipulation of visual components. The Scripting layer has a wrapper for the Backend layer, and another one for the Artist layer whose methods interact with the corresponding layer.
+
+![Top level Diagram](./img/UML_Top_Level.svg)
