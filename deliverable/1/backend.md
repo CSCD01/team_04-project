@@ -52,9 +52,9 @@ These backends support rendering for standalone files such as PDF. Hard copy bac
 
 ## Event Handling
 
-The Backend Layer also provides classes that support event handling.
-
 ![Backend Layer UML - Event](./img/UML_Backend_Layer_Event.svg)
+
+The Backend Layer also provides classes that support event handling.
 
 - Events such as `MouseEvent`, `ResizeEvent`, and `DrawEvent`, which have a base class `Event`. Different event classes are responsible for handling user input, such as keyboard strokes and mouse movement.
 - `TimerBase` supports event timing and callbacks through methods such as `start(stop, interval)`, `stop(self)`, and `add_callback(self, func, ...)`, and `remove_callback(self, func, ...)`.

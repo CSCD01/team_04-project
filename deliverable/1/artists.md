@@ -8,9 +8,9 @@ There are both primitive and composite implementations of `Artist` classes.
 
 ## Primitives
 
-Primitives can stand on their own in figures, or they can also be part of composites.
-
 ![Artist Layer UML - Primitives](./img/UML_Artist_Layer_Primitive.svg)
+
+Primitives can stand on their own in figures, or they can also be part of composites.
 
 - `Line2D` resides in [lines.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/lines.py). They define lines and their various styles.
 - Shape classes reside in [patches.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/patches.py). There are shapes such as `Rectangle`, `Polygon`, `Circle`, `Ellipse`, which have an abstract base class `Patch`.
@@ -19,9 +19,9 @@ Primitives can stand on their own in figures, or they can also be part of compos
 
 ## Composites
 
-Composites can contain other composite objects, or primitive objects.
-
 ![Artist Layer UML - Composite](./img/UML_Artist_Layer_Composite.svg)
+
+Composites can contain other composite objects, or primitive objects.
 
 - `XAxis`, and `Yaxis`, which have a base class `Axis`. These reside in [axis.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axis.py).
 - `Tick` (which are contained in `Axis`) are also found in [axis.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axis.py).
