@@ -2,6 +2,12 @@
 
 Handout: https://www.utsc.utoronto.ca/~atafliovich/cscd01/project/deliverable1.pdf
 
+## Development Process
+
+The process we chose is an heavily modified "waterfall" process incorporating elements from test-driven development (especially useful for bug fixing and large unfamiliar projects) and from Agile (for work estimation and some tracking). We also incorporated elements from Kanban to minimize clutter on our Trello board and to ensure that tasks are not left abandoned for unreasonable periods, especially those upon which others are dependent.
+
+To see a full explanation of the process we designed (and the reasons why) see [here](process.md).
+
 ## Architecture Analysis
 
 Documentation [source available here](https://github.com/matplotlib/matplotlib/tree/master/doc) and [hosted here](https://matplotlib.org/3.1.1/contents.html).
