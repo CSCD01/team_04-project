@@ -1,4 +1,4 @@
-# Deliverable 2
+# Deliverable 1
 
 Handout: https://www.utsc.utoronto.ca/~atafliovich/cscd01/project/deliverable1.pdf
 
@@ -37,24 +37,3 @@ The highest level of the stack. This layer provides a simple and clean scripting
 
 The purpose of the scripting layer is to provide ease of use during interactive sessions with users, so that they can manipulate Figure objects indirectly. This is typically meant for data visualization purposes where the user does not need the full power of the artists' API.
 
-## Software Development Process
-
-## Specifics of Matplotlib development
-
-- Matplotlib was released in 2003, so its feature set and scope are well established
-- It is embedded in servers and applications, so it is important that breaking changes are rare
-- There is a pre-existing test framework and expectation that new code be well-tested, too
-
-## Processes considered
-
-- ~~Agile~~
-- Kanban
-- RUP
-- ~~Scrum~~
-- Spiral (Risk Analysis)
-- Waterfall
-- XP
-
-## Our choice
-
-TODO
