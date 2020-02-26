@@ -6,26 +6,26 @@ Abstract classes for most backend implementations are found in [backend_bases.py
 
 ![Backend Layer UML - Bases](./img/UML_Backend_Layer_Bases.svg)
 
-Both interactive and non-interactive backend implementations implement the following base classes:
+Both interactive and non-interactive backend implementations extend the following abstract base classes:
 
-- `FigureCanvasBase`: the area (canvas) on which the `Figure` is rendered. This class holds a reference to a `Figure`, and is responsible for giving a `Figure` a reference to it’s canvas. This class also defines methods to draw and render the `Figure`. Some of the methods provided: 
+- `FigureCanvasBase`: the area (canvas) on which the `Figure` is rendered. This class holds a reference to a `Figure`, and is responsible for giving a `Figure` a reference to its canvas. This class also defines methods to draw and render the `Figure`. Some of the methods provided: 
   - `resize(self, ...)`
   - `switch_backends(self, class)`
 - `RendererBase`: renders the `FigureCanvas`. The renderer handles drawing operations (for the `Figure`). Many of the rendering operations are handed off to `GraphicsContextBase`. Some of the methods provided:
   - `draw_path(self, gc, ...)`
   - `draw_text(self, gc, ...)`
   - `draw_image(self, gc, ...)`
-- `GraphicsContextBase`: An additional abstraction to handle colour and line styles, and blending properties. Some of the methods provided:
+- `GraphicsContextBase`: handles colour and line styles, and blending properties. Some of the methods provided:
   - `restore(self)`
   - `set_foreground(self, fg, isRGBA, ...)`
   - `set_snap(self, snap)`
-- `Backend`: An abstract base class that is implemented by each of the backends, such as `backendPdf`, `backendSVG`, among others. Some of the methods provided:
+- `Backend`: An abstract base class that is extended by each of the backends, such as `backendPdf`, `backendSVG`, among others. Some of the methods provided:
   - `show(cls, *, block)`
   - `export(cls)`
 
 ## Backend Implementations
 
-There are interactive (user-interface) backends, and non-interactive (hard copy) backend implementations. These implementations reside in [/backends](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/backends).
+There are interactive (user-interface) backends, and non-interactive (hard copy) backend implementations. These implementations reside in [backends/](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/backends).
 
 ![Backend Layer UML - Impl](./img/UML_Backend_Layer_Impl.svg)
 
@@ -42,13 +42,13 @@ These backends support rendering for standalone files such as PDF. Hard copy bac
 
 ### Raster
 
-- `BackendCairo`, which contains `FigureCanvasCairo` (an implementation of `FigureCanvasBase`). 
-- `BackendAGG`, which contains `FigureCanvasAGG` (an implementation of `FigureCanvasBase`). 
+- `BackendCairo`, which contains `FigureCanvasCairo` (a concrete implementation of `FigureCanvasBase`)
+- `BackendAGG`, which contains `FigureCanvasAGG` (a concrete implementation of `FigureCanvasBase`)
 
 ### Vector
 
-- `BackendSVG`, which contains `FigureCanvasSVG` (an implementation of `FigureCanvasBase`). 
-- `BackendPdf`, which contains `FigureCanvasPdf` (an implementation of `FigureCanvasBase`). 
+- `BackendSVG`, which contains `FigureCanvasSVG` (a concrete implementation of `FigureCanvasBase`)
+- `BackendPdf`, which contains `FigureCanvasPdf` (a concrete implementation of `FigureCanvasBase`) 
 
 ## Event Handling
 
