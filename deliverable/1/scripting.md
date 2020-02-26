@@ -15,12 +15,12 @@ The pyplot interface provides the following functions (non-exhaustive) to manage
 - `savefig()`: saves the current `Figure`
 - `axes()`: adds an `Axes` to the current `Figure` and makes it the current `Axes`
 - `gcf()`: returns the current `Figure`
-- `sca(Axes ax)`: sets the current `Axes` to `ax` and the current `Figure` to the parent of `ax`
+- `sca(ax)`: sets the current `Axes` to `ax` and the current `Figure` to the parent of `ax`
 
 ### Backend Layer wrappers
 - `draw()`: redraws the current `Figure`
 - `get_current_fig_manager()`: returns the current  `FigureManager`
 - `switch_backend()`: allows the user to change the selected backend
-- `show()`: displays all figures.
+- `show()`: displays all figures
 
 ![Scripting Layer UML](./img/UML_Scripting_Layer.svg)
