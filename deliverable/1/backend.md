@@ -40,12 +40,12 @@ These backends support rendering for user interfaces of applications.
 
 These backends support rendering for standalone files such as PDF. Hard copy backends are further categorized to Raster, and Vector.
 
-### Raster
+**Raster**
 
 - `BackendCairo`, which contains `FigureCanvasCairo` (a concrete implementation of `FigureCanvasBase`)
 - `BackendAGG`, which contains `FigureCanvasAGG` (a concrete implementation of `FigureCanvasBase`)
 
-### Vector
+**Vector**
 
 - `BackendSVG`, which contains `FigureCanvasSVG` (a concrete implementation of `FigureCanvasBase`)
 - `BackendPdf`, which contains `FigureCanvasPdf` (a concrete implementation of `FigureCanvasBase`) 
