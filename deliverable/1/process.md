@@ -63,7 +63,7 @@ Our branching strategy is simple enough: where possible, work on a unique branch
 
 ### Merging into master
 
-A merge to master will always require a peer review and therefore should not be made directly. Each merge should be made via a pull request and upon successful completion of a peer review is approved.
+A merge to master will always require a peer review and therefore should not be made directly. Each merge should begin with merging the master branch into the local branch. Merge conflicts will be fixed, and then the local branch will be rebased. Finally a pull request is made, and upon successful completion of a peer review, is approved.
 
 ### Merging branch-to-branch
 

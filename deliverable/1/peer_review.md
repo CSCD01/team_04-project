@@ -8,5 +8,5 @@
 - [ ] Meaningful variable names
 - [ ] Any new dependencies documented and added to Dockerfile
 - [ ] No new pylint errors or warnings (unless justified and approved)
-- [ ] External Documentation (docstrings) for all new functions, classes. modules and methods
+- [ ] External Documentation (docstrings) for all new functions, classes, modules, and methods
 - [ ] Example usages added for any new API or feature
