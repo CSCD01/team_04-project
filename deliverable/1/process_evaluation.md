@@ -41,13 +41,13 @@ So this leaves us with...
 
 From here we are left with 5 possible development processes from the ones we discussed in class. To choose the final process for our team, we have come up with 4 evaluation criteria that are central to the team's needs. The criteria was discussed and signed off on by all members, and are described as follows:
 
-1. Flexibility: We are not a professional team working 9 to 5 everyday. Whatever process we choose must reflect that some of us may be busy on days when others are not ect. So the process we choose will have to have loose regulations on workflow and work allocation, with availability to pile on critical development if important sections fall behind.
+1. **Flexibility**: We are not a professional team working 9 to 5 everyday. Whatever process we choose must reflect that some of us may be busy on days when others are not ect. So the process we choose will have to have loose regulations on workflow and work allocation, with availability to pile on critical development if important sections fall behind.
 
-2. Responsibility: Although we are not a professional team, there will be hard deadlines we must hit. The process we choose must allow us to see how close we are to done as the deadline approaches, and allow for us to allocate more resources to critical work that is falling behind.
+2. **Responsibility**: Although we are not a professional team, there will be hard deadlines we must hit. The process we choose must allow us to see how close we are to done as the deadline approaches, and allow for us to allocate more resources to critical work that is falling behind.
 
-3. Simplicity: The last thing we want to do is spend more time logging and enhancing the process, when we could be doing work. The process we choose should be streamlined and fast to set up and implement. Little oversight should be needed to keep things running smoothly in our small team, and team members should not feel undue pressure due to process structure.
+3. **Simplicity**: The last thing we want to do is spend more time logging and enhancing the process, when we could be doing work. The process we choose should be streamlined and fast to set up and implement. Little oversight should be needed to keep things running smoothly in our small team, and team members should not feel undue pressure due to process structure.
 
-4. Robustness: We as a team are working with matplotlib for the first time, so it is important we do not break anything. Therefore, we think our chosen process should follow test driven development philosophies, and force us to ensure our bug fixes not only “fix” the bug but also implement new tests to ensure that it stays fixed.
+4. **Robustness**: We as a team are working with matplotlib for the first time, so it is important we do not break anything. Therefore, we think our chosen process should follow test driven development philosophies, and force us to ensure our bug fixes not only “fix” the bug but also implement new tests to ensure that it stays fixed.
 
 ## Flexibility
 

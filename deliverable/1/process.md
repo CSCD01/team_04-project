@@ -9,10 +9,10 @@ There was some debate about which process our chosen methodologies best conforms
 ## Our Decision Process
 
 Our primary requirements for a development process were:
-- Flexibility: in our experience, these projects are completed in bursts, rather than continuously distributed work. This is just a result of being coursework in an undergraduate course.
-- Robustness: in order to maximize our chances of making a meaningful contribution, any additions or modifications we make must be thoroughly tested. We prefer that our tests are written before the tested code especially due to the nature of bug fixing (sometimes there may not actually BE a bug, sometimes a fix breaks something else).
-- Simplicity: the work done to maintain the process should be minimal and certainly not exceed the productivity it enhances. That is, if it doesn't help us develop better or faster, it should not be a part of our process.
-- Responsibility: the process should help us ensure that our deadlines are being met, since postponement is typically not an option in an academic setting at this level.
+- **Flexibility**: in our experience, these projects are completed in bursts, rather than continuously distributed work. This is just a result of being coursework in an undergraduate course.
+- **Robustness**: in order to maximize our chances of making a meaningful contribution, any additions or modifications we make must be thoroughly tested. We prefer that our tests are written before the tested code especially due to the nature of bug fixing (sometimes there may not actually BE a bug, sometimes a fix breaks something else).
+- **Simplicity**: the work done to maintain the process should be minimal and certainly not exceed the productivity it enhances. That is, if it doesn't help us develop better or faster, it should not be a part of our process.
+- **Responsibility**: the process should help us ensure that our deadlines are being met, since postponement is typically not an option in an academic setting at this level.
 
 For a detailed breakdown of how we evaluated each process in order to arrive at these decisions and how we subsequently modified the process we chose, see [here](./process_evaluation.md).
 
@@ -29,11 +29,11 @@ We have chosen to employ Trello as the primary tool for time management, allocat
 - Estimations will be done in terms of work hours and revised as we see fit, by majority vote.
 - Anything that will use (a) group members' time for this project should be tracked on Trello. Post-hoc estimation is better than none.
 - Each task will be a single Trello card organized into one of these five columns: 
-    - Planned: has not been started. Reassignment is possible.
-    - Blocked: depends on another task being completed first. Blocking task should be linked on blocked card.
-    - In Progress: may have uncommitted work by the group member(s) to which it is assigned. Frequent contact required.
-    - Awaiting Review: is considered completed by the last assigned group member and awaits the review of another.
-    - Completed: is no longer active (finished or abandoned) and is kept mostly for progress tracking.
+    - **Planned**: has not been started. Reassignment is possible.
+    - **Blocked**: depends on another task being completed first. Blocking task should be linked on blocked card.
+    - **In Progress**: may have uncommitted work by the group member(s) to which it is assigned. Frequent contact required.
+    - **Awaiting Review**: is considered completed by the last assigned group member and awaits the review of another.
+    - **Completed**: is no longer active (finished or abandoned) and is kept mostly for progress tracking.
 
 ## Peer Review
 
@@ -89,7 +89,7 @@ So, we created a Dockerfile that has all the build dependencies, test dependenci
 
 In order to generate preliminary class UML diagrams to help us understand the architecture and to serve as references as we continue our development process, we use the `pyreverse` tool that is now included in `pylint`.
 
-Also, we will be continuing to use pylint during our development to ensure quality and reliable code.
+Also, we will be continuing to use `pylint` during our development to ensure quality and reliable code.
 
 ### VSCode and Extensions
 
@@ -97,8 +97,8 @@ Working in harmony with our Dockerfile is the Visual Studio Code extension [Remo
 
 We also make use of a host of other extensions:
 - [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) helps us understand when changes were made to the code and for what reason, without explicitly browsing the commit history.
-- [CPP Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) may not be needed, but in the case where a bug turns out to be in a C++ module (or a feature requires modifying/adding to one), may come in handy.
-- [RemoteX11](https://marketplace.visualstudio.com/items?itemName=spadin.remote-x11) allows for the transmission of X11 data (for GUI elements) from the development container to the host machine of the developer. We need this to check that the GUI elements of matplotlib still work and in the case that a feature requires (likely) GUI modifications / additions.
+- [CPP Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) may not be needed, but in the case where a bug turns out to be in a `C++` module (or a feature requires modifying/adding to one), may come in handy.
+- [Remote X11](https://marketplace.visualstudio.com/items?itemName=spadin.remote-x11) allows for the transmission of X11 data (for GUI elements) from the development container to the host machine of the developer. We need this to check that the GUI elements of matplotlib still work and in the case that a feature requires (likely) GUI modifications / additions.
 - [Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) is rather obviously useful.
 
 ### Draw.io
