@@ -16,6 +16,18 @@ Our primary requirements for a development process were:
 
 For a detailed breakdown of how we evaluated each process in order to arrive at these decisions and how we subsequently modified the process we chose, see [here](./process_evaluation.md).
 
+## Phases
+
+Akin to waterfall's cannonical 5 phases, our development will proceed in the following sequential order of 4 phases:
+- **Requirements Gathering**: the elicitation of necessary changes and the recording of those requirements on the Trello board.
+- **Design**: the choice of interface and implementation of any changes and/or additions
+- **Test Development**: the creation of automated unit tests and/or manual validation tests that ensure the change/addition is the accurate and as intended.
+- **Implementation**: the phase in which the coding is actually completed up until the moment when the code passes all test and is ready for peer review.
+
+The major modification that we have made to the above is that testing (often referred to as the "verification" stage) now precedes the implementation stage. This is the primary incorporation of TDD strategies into our process.
+
+Also, we see no need for a maintenance phase or anything akin to it as we will not be providing long term support (or necessarily any further work) after the final due date of this project.
+
 ## Tracking
 
 We have chosen to employ Trello as the primary tool for time management, allocation of tasks, and verification that individual work performances fall within some reasonable standard deviation. In order to do so, we will be borrowing some tricks from agile development, and ignoring some distasteful strictures:
