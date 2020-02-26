@@ -16,9 +16,7 @@ Primarily, matplotlib is a library, whose `import`able elements are under the [m
 
 ### The 3-tiered Architecture
 
-The current architecture of matplotlib is based around creating, rendering, and updating `Figure` objects. It consists of three stacked up layers. The **encapsulation** of Matplotlib is in such a way that each layer in the stack is only aware of and interacts with lower levels which results in an appropriate distribution of complexity. Each layer is responsible for a particular functionality such as event-based interactions, visual component abstraction and creation, programmatic manipulation. 
-
-![Top level Diagram](./img/UML_Top_Level.svg)
+The current architecture of matplotlib is based around creating, rendering, and updating `Figure` objects. It consists of three stacked up layers. The **encapsulation** of Matplotlib is in such a way that each layer in the stack is only aware of and interacts with lower levels which results in an appropriate distribution of complexity. Each layer is responsible for a particular functionality such as event-based interactions, visual component abstraction and creation, or stateful user interaction ![Top level Diagram](./img/UML_Top_Level.svg)
 
 ### Backend Layer
 
@@ -39,7 +37,6 @@ The middle layer of Matplotlib's architecture. This layer's main responsibility 
 
 This layer is a wrapper around the Artist and Backend layers. For a full breakdown of the scripting layer's structure: [details](./scripting.md)
 
-The highest level of the stack. This layer provides a simple and clean scripting interface to allow programmatic manipulation of visual components. The Scripting layer has wrappers for the Backend Layer classes/functionalities, similarly for the Artist Layer whose methods interact with the corresponding layer.
+The highest level of the stack. This layer provides a simple and clean scripting interface to allow stateful interaction with visual components. The Scripting layer has wrappers for the Backend Layer classes/functionalities, similarly for the Artist Layer whose methods interact with the corresponding layer.
 
 The purpose of the scripting layer is to provide ease of use during interactive sessions with users, so that they can manipulate Figure objects indirectly. This is typically meant for data visualization purposes where the user does not need the full power of the artists' API.
-
