@@ -22,7 +22,7 @@
 To pick the best development process for our team, we first eliminate the processes that do not make sense. These would be; Scrum, Agile, Reuse-Oriented, and eXtreme Programming.
 * Scrum is not being considered due to the role structure. We do not have a Product Owner, nor do we have anyone who wants to be the Scrum Master. As both roles are integral to the Scrum process, it will not be considered.
 * Agile will not be considered for a similar reason. There is no customer satisfaction to evaluate, nor are we dealing with shifting requirements.
-* Reuse Oriented focuses on using open source software for most of the development. As we are fixing bugs, and doing feature development, we will not likely be using any open source software.
+* Reuse Oriented focuses on using existent components and services. As we are fixing bugs, and doing novel feature development, we will not likely find components that meet our needs readily available.
 * Extreme Programming is a type of Agile, and will be removed for the same reason as above.
 
 So this leaves us with...
@@ -43,11 +43,11 @@ From here we are left with 5 possible development processes from the ones we dis
 
 1. Flexibility: We are not a professional team working 9 to 5 everyday. Whatever process we choose must reflect that some of us may be busy on days when others are not ect. So the process we choose will have to have loose regulations on workflow and work allocation, with availability to pile on critical development if important sections fall behind.
 
-2. Deadlines and Progression: Although we are not a professional team, there will be hard deadlines we must hit. The process we choose must allow us to see how close we are to done as the deadline approaches, and allow for us to allocate more resources to critical work that is falling behind.
+2. Responsibility: Although we are not a professional team, there will be hard deadlines we must hit. The process we choose must allow us to see how close we are to done as the deadline approaches, and allow for us to allocate more resources to critical work that is falling behind.
 
 3. Simplicity: The last thing we want to do is spend more time logging and enhancing the process, when we could be doing work. The process we choose should be streamlined and fast to set up and implement. Little oversight should be needed to keep things running smoothly in our small team, and team members should not feel undue pressure due to process structure.
 
-4. Test Driven: We as a team are working with matplotlib for the first time, so it is important we do not break anything. Therefore, we think our chosen process should follow test driven design philosophies, and force us to ensure our bug fixes not only “fix” the bug but also implement new tests to ensure that it stays fixed.
+4. Robustness: We as a team are working with matplotlib for the first time, so it is important we do not break anything. Therefore, we think our chosen process should follow test driven development philosophies, and force us to ensure our bug fixes not only “fix” the bug but also implement new tests to ensure that it stays fixed.
 
 ## Flexibility
 
@@ -61,7 +61,7 @@ Spiral will work decently in terms of flexibility. The core concept of defining 
 
 Waterfall has some issues with flexibility. By dividing the project into rigid sections, it could help our small team divide the work evenly. The main flexibility problems in waterfall come from changing requirements, but this will not be an issue for our static process. However, the sections must be completed in order, so waterfall is somewhat unfavorable when it comes to flexibility.
 
-Rational Unified Development has a few main advantages that should be mentioned. The phases that used in RUD, mainly the inception and elaboration sections have already been completed for this phase of the project. The workflow of RUD is rather static in the order you do things, which is a point against it. We also do not have business use cases, an important part of RUD's workflow structure. RUD also requires lots of documentation and requirements gathering, something we will not be doing a lot of. We feel that RUD is to strict in its structure to be considered.
+Rational Unified Process has a few main advantages that should be mentioned. The phases that used in RUP, mainly the inception and elaboration sections have already been completed for this phase of the project. The workflow of RUP is rather static in the order you do things, which is a point against it. We also do not have business use cases, an important part of RUP's workflow structure. RUP also requires lots of documentation and requirements gathering, something we will not be doing a lot of. We feel that RUP is to strict in its structure to be considered.
 
 - Kanban
 - Incremental Development
@@ -70,7 +70,7 @@ Rational Unified Development has a few main advantages that should be mentioned.
 - Waterfall
 - ~~Rational Unified Process~~
 
-## Deadlines and Progression
+## Responsibility
 
 Of the remaining 5 processes, waterfall is by far the one with the best deadline structure. We could set a deadline for each phase, and/or a deadline for the whole process for each section of code we work on. Its progression tracking is a little quantized (we will only be able to see which stage someone is at), but overall it is still the strongest process in this regard.
 
@@ -78,7 +78,7 @@ Kanban has a very strong sense of progression tracking. Multiple tickets can be 
 
 While spiral does not seem to have any built in method for deadline enforcement, it does have distinct phases. This would allow us to track progression by counting the number of “loops” completed. However, this would do nothing for telling us how close we are to completing the work. At least as many modifications as Kanban would be required.
 
-Incremental Development and Incremental Delivery both suffer from major issues in this area. As both are designed around getting software to a client as quickly as possible, they suffer from a major lack of tracking. There is no build in progression system other than to deliver parts of the system. There is also no way to implement deadlines. As we think both of these are a central part of the process we want, the amount of work required to add them to either of these makes them not worth considering any more.
+Incremental Development and Incremental Delivery both suffer from major issues in this area. As both are designed around getting software to a client as quickly as possible, they suffer from a major lack of tracking. There is no built-in progression system other than to deliver parts of the system. There is also no way to implement deadlines. As we think both of these are a central part of the process we want, the amount of work required to add them to either of these makes them not worth considering any more.
 
 - Waterfall
 - Kanban
@@ -98,7 +98,7 @@ Spiral is the most complex of these 3. The sections for prototyping and risk ana
 - Kanban
 - ~~Spiral~~
 
-## Test Driven
+## Robustness
 
 Waterfall has some built in test driven functionalities, as specific steps require that unit or integration tests be developed. However, these are usually taking place after the software development is finished. While this is not ideal, we could simply modify it, and do the tests before the development, and nothing will really be lost from the process.
 

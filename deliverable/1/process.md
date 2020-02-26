@@ -11,7 +11,7 @@ There was some debate about which process our chosen methodologies best conforms
 Our primary requirements for a development process were:
 - Flexibility: in our experience, these projects are completed in bursts, rather than continuously distributed work. This is just a result of being coursework in an undergraduate course.
 - Robustness: in order to maximize our chances of making a meaningful contribution, any additions or modifications we make must be thoroughly tested. We prefer that our tests are written before the tested code especially due to the nature of bug fixing (sometimes there may not actually BE a bug, sometimes a fix breaks something else).
-- Efficiency: the work done to maintain the process should be minimal and certainly not exceed the productivity it enhances. That is, if it doesn't help us develop better or faster, it should not be a part of our process.
+- Simplicity: the work done to maintain the process should be minimal and certainly not exceed the productivity it enhances. That is, if it doesn't help us develop better or faster, it should not be a part of our process.
 - Responsibility: the process should help us ensure that our deadlines are being met, since postponement is typically not an option in an academic setting at this level.
 
 For a detailed breakdown of how we evaluated each process in order to arrive at these decisions and how we subsequently modified the process we chose, see [here](./process_evaluation.md).
