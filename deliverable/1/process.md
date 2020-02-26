@@ -49,7 +49,7 @@ Each peer review can be completed remotely and simply entails:
 
 ## Test Driven Development
 
-Our process will incorporate most of the standard paradigms of TDD. We will write tests that initially fail to identify either the feature or bug that is needed. 
+Our process will incorporate most of the standard paradigms of TDD. We will write tests that initially fail in order to identify either the feature or bug that is needed. We will begin development in earnest only once the tests that have written fully evaluate the correctness of the portion in question. This does not have to be a whole task: a good size portion might be a single method or function.
 
 ## Continuous Integration
 
