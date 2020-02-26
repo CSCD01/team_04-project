@@ -49,7 +49,7 @@ Each peer review can be completed remotely and simply entails:
 
 ## Test Driven Development
 
-Our process will incorporate most of the standard paradigms of TDD. We will write tests that fail to identify either the feature or bug that is needed. 
+Our process will incorporate most of the standard paradigms of TDD. We will write tests that initially fail to identify either the feature or bug that is needed. 
 
 ## Continuous Integration
 
@@ -85,9 +85,11 @@ Building matplotlib from source code is a nightmare. The dependencies for the C 
 
 So, we created a Dockerfile that has all the build dependencies, test dependencies and other useful tooling for development installed. This way, all group members have a unified and simplified development experience.
  
-### Pyreverse
+### Pylint and Pyreverse
 
-In order to generate preliminary class UML diagrams to help us understand the architecture and to serve as references as we continue our development process, we use the `pyreverse` tool that is not included in `pylint`.
+In order to generate preliminary class UML diagrams to help us understand the architecture and to serve as references as we continue our development process, we use the `pyreverse` tool that is now included in `pylint`.
+
+Also, we will be continuing to use pylint during our development to ensure quality and reliable code.
 
 ### VSCode and Extensions
 
