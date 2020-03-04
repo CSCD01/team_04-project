@@ -17,6 +17,7 @@
 
 0. [Deliverable 0](./deliverable/0/deliverable_0.pdf)
 1. [Deliverable 1](./deliverable/1/deliverable_1.md)
+2. [Deliverable 2](./deliverable/2/deliverable_2.md)
 
 ## Dependencies
 - Docker (newest version is best)
