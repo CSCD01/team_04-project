@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:0-ubuntu-18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
-RUN apt-get update \
+RUN apt-get update -y \
    && apt-get -y install --no-install-recommends python3-pip \
    && apt-get -y build-dep python3-matplotlib \
    && apt-get -y install pkg-config \
