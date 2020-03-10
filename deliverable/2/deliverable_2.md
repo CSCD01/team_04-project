@@ -23,5 +23,7 @@ We have shortlisted the following issues for Matplotlib, and have marked the one
 
 We have followed the TDD (Test Driven Development) Waterfall process that we described in the last deliverable for this deliverable. 
 
+Check how we followed our process [here](./process.md).
+
 
 
