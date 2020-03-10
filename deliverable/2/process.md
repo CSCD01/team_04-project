@@ -14,7 +14,7 @@ We had four types of tasks: **Documentation** (corresponding to **Requirements G
 
 ## Requirements Gathering
 
-As mentioned, all five issues were part of this phase. Issues [14233]() (alias: **TIC**) and [9007]() (alias: **STALE**) were documented only, while issues [16389]() (alias: **COMMUTATE**), [1460]() (alias: **KWARGS**), [16482]() (alias: **BBL**) were also designed for, tested, and implemented.
+As mentioned, all five issues were part of this phase. Issues [14233](./14233.md) (alias: **TIC**) and [9007](./9007.md) (alias: **STALE**) were documented only, while issues [16389](./16389.md) (alias: **COMMUTATE**), [1460](./1460.md) (alias: **KWARGS**), [16482](./16482.md) (alias: **BBL**) were also designed for, tested, and implemented.
 
 We created a document for each of the issues, and provided details on:
 
@@ -30,7 +30,7 @@ Here are some snapshots of the Trello board throughout the **Requirements Gather
 
 ![trello 3](./img/trello_3.png)
 
-The commit marking the end of this phase was [9d4f753](https://github.com/CSCD01/team_04-project/commit/9d4f753ae68fccf4b8d25e74b44930421aac1f58). The state of the deliverable at this stage can be found [here](https://github.com/CSCD01/team_04-project/blob/9d4f753ae68fccf4b8d25e74b44930421aac1f58/deliverable/2/deliverable_2.md).
+The commit marking the end of this phase was [9d4f753](https://github.com/CSCD01/team_04-project/commit/9d4f753ae68fccf4b8d25e74b44930421aac1f58). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/9d4f753ae68fccf4b8d25e74b44930421aac1f58/deliverable/2/deliverable_2.md).
 
 ## Design
 
@@ -46,11 +46,11 @@ Here are some snapshots of the Trello board throughout the **Design** phase.
 
 ![trello 7](./img/trello_7.png)
 
-The commit marking the end of this phase was [54f9584](https://github.com/CSCD01/team_04-project/commit/54f9584e87e5d26ae96956e88217467546200da4). The state of the deliverable at this stage can be found [here](https://github.com/CSCD01/team_04-project/blob/54f9584e87e5d26ae96956e88217467546200da4/deliverable/2/deliverable_2.md).
+The commit marking the end of this phase was [54f9584](https://github.com/CSCD01/team_04-project/commit/54f9584e87e5d26ae96956e88217467546200da4). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/54f9584e87e5d26ae96956e88217467546200da4/deliverable/2/deliverable_2.md).
 
 ## Test Development
 
-During the Test Development phase, we developed both **unit tests** and **acceptance tests** for each of the issues. The unit tests were committed on a separate branch for that issue (e.g. for issue 16389, the unit tests were first committed on branch `deliverable_2_16389`), to the affected unit test suite. After this phase, there new unit test(s), and the acceptance test(s), are failing because the implementation has not been completed.
+During the Test Development phase, we developed both **unit tests** and **acceptance tests** for each of the issues. The unit tests were committed on a separate branch for that issue (e.g. for issue 16389, the unit tests were first committed on branch `deliverable_2_16389`), to the affected unit test suite. After this phase, the new unit test(s), and the acceptance test(s), are failing because the implementation has not been completed.
 
 Here are some snapshots of the Trello board throughout the **Test Development** phase.
 
@@ -60,7 +60,7 @@ Here are some snapshots of the Trello board throughout the **Test Development** 
 
 ![trello 10](./img/trello_10.png)
 
-The commit marking the end of this phase was [c1a7758](https://github.com/CSCD01/team_04-project/commit/c1a77587efa5771e30e01d1e355b157f031e303b). The state of the deliverable at this stage can be found [here](https://github.com/CSCD01/team_04-project/blob/c1a77587efa5771e30e01d1e355b157f031e303b/deliverable/2/deliverable_2.md).
+The commit marking the end of this phase was [c1a7758](https://github.com/CSCD01/team_04-project/commit/c1a77587efa5771e30e01d1e355b157f031e303b). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/c1a77587efa5771e30e01d1e355b157f031e303b/deliverable/2/deliverable_2.md).
 
 ## Implementation
 
@@ -70,4 +70,4 @@ Here are some snapshots of the Trello board throughout the **Implementation** ph
 
 ![trello 10](./img/trello_11.png)
 
-The commit marking the end of this phase was [to-do](). The state of the deliverable at this stage can be found [here]().
+The commit marking the end of this phase was [to-do](). The state of the deliverable at the end of this phase can be found [here]().
