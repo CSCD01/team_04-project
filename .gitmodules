@@ -1,0 +1,3 @@
+[submodule "matplotlib"]
+	path = matplotlib
+	url = git@github.com:CSCD01-team04/matplotlib
