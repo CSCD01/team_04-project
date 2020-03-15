@@ -36,6 +36,8 @@ print("Hello World)
 
 ## Time Estimate
 
+Describe time estimate in developer hours based on analysis of design choices.
+
 ## Reason of Choice to Implement
 
 Describe why we chose to implement this issue instead of the other one. Good reasons would be that this issue would bring more benefits to matplotlib users, or is more requested, or that this issue is more feasible to implement within the given timeframe. Other possible good reasons: more of a challenge, changes to be introduced are easy to integrate into the existing matplotlib architecture/use-cases.
@@ -48,6 +50,3 @@ Describe any unit-test cases and where they will reside. Describe the purpose of
 
 Describe step-by-step instructions on how the user will execute these tests. Describe the purpose of each acceptance test, and the coverage of this test suite.
 
-## Time Estimate
-
-Describe time estimate in developer hours based on analysis of design choices.
