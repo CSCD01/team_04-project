@@ -18,9 +18,9 @@ The `Container` class will group certain artists so the user can treat them as o
 
 `ErrorbarContainer` takes as parameters `lines`, and `has_xerr`/`has_yerr`. The `lines` parameter is a tuple with information about the error bar cap lines, and ranges of the error. The `has_xerr`/`has_yerr` parameter is a boolean which is `True` if the errorbar has `x`/`y` errors.
 
-## Errorbar
+## Axes and `Axes.errorbar`
 
-`Errorbar` is defined in [Axes.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086). It corresponds to the range of error, or the size of the errorbar `xerr, yerr` of a particular point `x, y` in a graph. Sometimes a particular point has no range of error, so `xerr, yerr` can be omitted. 
+The `Axes.errorbar()` is defined in [Axes.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086). It corresponds to the range of error, or the size of the errorbar `xerr, yerr` of a particular point `x, y` in a graph. Sometimes a particular point has no range of error, so `xerr, yerr` can be omitted. 
 
 There are other styling parameters such as `fmt` (formatting the data points and data lines, `ecolor` (specifying the colour of the errorbar line), `elinewidth` (specifying the linewidth of the errorbar lines), which we will omit in this documentation.
 

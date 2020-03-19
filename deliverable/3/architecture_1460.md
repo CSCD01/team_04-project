@@ -22,7 +22,7 @@ Description
 
 Description
 
-## SublotBase and subplot_class_factory
+## SubplotBase and `subplot_class_factory()`
 
 Description
 
