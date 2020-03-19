@@ -1,18 +1,18 @@
-# Errorbars
+# Errorbar
 
-For the feature that we decided to work on ([#7876](https://github.com/matplotlib/matplotlib/issues/7876)), we do not need to make any changes to the architecture as the implementation will be fully done inside the `errorbar` method located in [Axes.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086).
+For the feature that we decided to work on (detailed in [Issue 7876](https://github.com/matplotlib/matplotlib/issues/7876)), we do not need to make any changes to the architecture as the implementation will be fully done inside the `errorbar` method located in [Axes.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086).
 
-In order to design this feature, we needed to analyze more how does the `errorbar` method works and how it interacts with other classes and modules outside `Axes`. The `errorbar` method returns an instance of `ErrorbarContainer` which extends from the `Container` class.
+In order to design this feature, we needed to analyze more how does the `Axes.errorbar()` method works and how it interacts with other classes and modules outside `Axes`. The `Axes.errorbar()` method returns an instance of `ErrorbarContainer` which extends from the `Container` class.
 
-![plot](./img/7876.svg)
+![UML](./img/7876_uml_1.svg)
 
 ## Container
 
-The [`Container`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/container.py) class is a subclass of `Artist` that helps gathering related `Artist` like the bars of a bar plot.
+The [`Container`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/container.py) class helps gathering related `Artist` like the bars of a bar plot.
 
 The `Container` class will group certain artists so the user can treat them as one instead of initialize them or work with them separately. Some of the `Container` subclasses include `BarContainer`, `ErrorbarContainer` and `StemContainer`.
 
-## Errorbar Container
+## ErrorbarContainer
 
 [`ErrorbarContainer`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/container.py#L71) extends `Container` and is described as the container for the artists for errorbars. It contains the datalines, with the error ranges corresponding to some data points.
 
@@ -73,4 +73,6 @@ def extract_err(err, data):
 
 The choice of using a `Container` class to group related artists helps to manage them as such instead of doing it individually. As the `Container` class is easily extendible, other subclasses can be implemented if a grouping is necessary.
 
-The `errorbar` method from the `Axes` class returns the `ErrorbarContainer` which will tell the `Artist` what needs to be plotted. In other words, the `ErrorbarContainer` is in charge of plotting the error bars in the graph taking off the responsibility from the `Axes` class.
+The `Axes.errorbar()` method from the `Axes` class returns the `ErrorbarContainer` which will tell the `Artist` what needs to be plotted. In other words, the `ErrorbarContainer` is in charge of plotting the error bars in the graph taking off the responsibility from the `Axes` class. There are similar methods such as `Axes.bar()` which returns a `BarContainer`, and `Axes.stem()` which returns a `StemContainer`.
+
+![UML](./img/7876_uml_2.svg)
