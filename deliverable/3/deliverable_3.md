@@ -15,7 +15,14 @@ We have documented this feature [here](./7876.md).
 We explained the reason for choosing to implement it, and implementation plans [here](./7876_impl.md).
 
 ## Architecture Revisited ##
-We have revisited the architecture of matplotlib. Based on knowledge we've gained from previous deliverables (and this deliverable), we present an updated architecture description, with a more granular look at the components affected by the selected features [here](./architecture.md)
+
+We have revisited the architecture of matplotlib. Based on knowledge we've gained from previous deliverables (and this deliverable), we present a higher level architecture description [here]().
+
+We also took a more granular look at the components affected both the features we have documented.
+
+[**Architecture related to Issue 7876**](./architecture_7876).
+
+[**Architecture related to Issue 1460**](./architecture_1460).
 
 
 
