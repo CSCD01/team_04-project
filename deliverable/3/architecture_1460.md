@@ -2,6 +2,8 @@
 
 Introduction
 
+![UML](./img/1460_uml_1.svg)
+
 ## Pyplot and `Pyplot.subplots()`
 
 Description
