@@ -1,4 +1,4 @@
-# Errorbar
+# Architecture of Issue 7876
 
 For the feature that we decided to work on (detailed in [Issue 7876](https://github.com/matplotlib/matplotlib/issues/7876)), we do not need to make any changes to the architecture as the implementation will be fully done inside the `errorbar` method located in [Axes.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086).
 

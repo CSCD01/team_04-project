@@ -20,9 +20,9 @@ We have revisited the architecture of matplotlib. Based on knowledge we've gaine
 
 We also took a more granular look at the components affected both the features we have documented.
 
-[**Architecture related to Issue 7876**](./architecture_7876).
+[**Architecture related to Issue 7876**](./architecture_7876.md).
 
-[**Architecture related to Issue 1460**](./architecture_1460).
+[**Architecture related to Issue 1460**](./architecture_1460.md).
 
 
 

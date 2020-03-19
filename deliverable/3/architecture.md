@@ -16,11 +16,11 @@ The middle layer of Matplotlib's architecture. This layer's main responsibility 
 
 The more important Artist Layer classes are perhaps the `Axes` and `Figure` classes. While documenting Issue 7876, we learned more about `Axes` methods, particularly `Axes.errorbar()`, and the design patterns within this class. We also learned about the `Container` class which is used to gather similar `Artist` objects. 
 
-[**Architecture related to Issue 7876**](./architecture_7876).
+[**Architecture related to Issue 7876**](./architecture_7876.md).
 
 While documenting Issue 1460, we also learned more about `Figure` methods, particularly `Figure.subplots()` and `Figure.add_subplot()`. We discovered a factory: `subplot_class_factory`, which allows users to create their own Subplot classes.
 
-[**Architecture related to Issue 1460**](./architecture_1460).
+[**Architecture related to Issue 1460**](./architecture_1460.md).
 
 ### Scripting Layer
 
