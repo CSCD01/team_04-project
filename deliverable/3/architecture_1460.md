@@ -86,12 +86,41 @@ In the case it is an instance of `Subplot`, it will have a few optional paramete
 
 ## GridSpec ##
 
-Description
+The [GridSpec](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/gridspec.py#L238) class serves as a standardised way to specify the geometry of a grid that is placed on a plot. Simply put, it is a grid layout to place subplot within a figure.
+
+```
+__init__(self, nrows, ncols, figure=None,
+                 left=None, bottom=None, right=None, top=None,
+                 wspace=None, hspace=None,
+                 width_ratios=None, height_ratios=None):
+```
+
+The parameters are fairly straight forward:
+
+`nrows, ncols`: an integer that represents the number of rows or columns for the subplot grid. 
+
+`height_ratios, width_ratios`: An array like object of length `nrows` or `ncols` that is a ratio of the space for each column. All entries in the array do not need to sum to 1, but ratios are calculated as `x_ratios[i]/sum(x_ratios)`
+
+`left, right, top, bottom`: An optional parameter, a float that is the extent of the subplots as a fraction of figure width or height. Left cannot be larger than right, and bottom cannot be larger than top. Infered from rcParams if not specified. 
+
+`wspace, hspace`: floats that represent the spacing between subplots as a fraction of the axis width or height. Infered from rcParams if not specified
 
 ## SubplotBase and `subplot_class_factory()`
 
-Description
+SubplotBase class can be found at [`_subplots.py`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_subplots.py#L11). A baseclass for `Subplots`, and an instance of the `Axes` class. The class also defines methods for generating and manipulating a set of `Axes` within a figure.
+
+```
+def __init__(self, fig, *args, **kwargs):
+```
+
+It takes the ame method parameters as `Figure.add_subplot()`, but it also takes an instance of the `Figure` class.
+
+[`subplot_class_factory(axes_class=None)`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_subplots.py#L180) is a method that can be found in the same file, and it's main purpose is to make a new class that inherits from `.SubplotBase` and the given axes_class (which is assumed to be a subclass of `.axes.Axes`).
+
+If `axes_class` is not specified, it defaults to `Axes`.
 
 ## Design Patterns Observed
 
-Description
+There is a factory pattern from `subplot_class_factory()`, as it produces a list of `SubplotBase` instances with every call. 
+
+The use of `Figure` and other classes to act as wrappers help to keep the code managable, and reduces the amount of repeated code. 
