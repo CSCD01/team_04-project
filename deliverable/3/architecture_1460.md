@@ -121,6 +121,6 @@ If `axes_class` is not specified, it defaults to `Axes`.
 
 ## Design Patterns Observed
 
-There is a factory pattern from `subplot_class_factory()`, as it produces a list of `SubplotBase` instances with every call. 
+There is a factory pattern from `subplot_class_factory()`, as it produces a list of `SubplotBase` instances with every call. The flexability to create and add `subplots` to a `figure` this way makes things very simple to understand, and easy to use. 
 
-The use of `Figure` and other classes to act as wrappers help to keep the code managable, and reduces the amount of repeated code. 
+The use of `Figure` and other classes to act as wrappers help to keep the code managable, and reduces the amount of repeated code. I really like how you can manipulate and create a single `figure` object to manage multiple subplots, with a great deal of control over each one individually. 
