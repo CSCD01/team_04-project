@@ -1,6 +1,6 @@
 # Architecture of Issue 1460
 
-Introduction
+For the feature detailed in [Issue 1460](https://github.com/matplotlib/matplotlib/issues/1460), there would be no architectural changes. This feature focuses on the interaction between `Pyplot.subplots()`, `Figure.subplots()`, `Figure.add_subplot()`, `SubplotBase`, `GridSpecBase`, which are all explained in more detail below.
 
 ![UML](./img/1460_uml_1.svg)
 
@@ -36,14 +36,10 @@ def __init__(self,
              ):
 ```
 It takes the following parameters (some omitted):
-- `figsize`: 2-tuple of floats, default: :rc:`figure.figsize`
-            Figure dimension ``(width, height)`` in inches.
-- `dpi`: float, default: :rc:`figure.dpi`
-            Dots per inch.
-- `facecolor`: default: :rc:`figure.facecolor`
-            The figure patch facecolor.
-- `edgecolor`: default: :rc:`figure.edgecolor`
-            The figure patch edge color.
+- `figsize`: 2-tuple of floats, representing the `Figure` dimension ``(width, height)`` in inches.
+- `dpi`: Dots per inch.
+- `facecolor`: The figure patch facecolor.
+- `edgecolor`: The figure patch edge color.
 
 ### `Figure.subplots()` ###
 
@@ -62,21 +58,13 @@ Also in the `Figure` class, [`Figure.add_subplot()`](https://github.com/matplotl
 
 ```
 def add_subplot(self, *args, **kwargs):
-    Call signatures::
-        add_subplot(nrows, ncols, index, **kwargs)
-        add_subplot(pos, **kwargs)
-        add_subplot(ax)
-        add_subplot()
 ```
 
-`*args`: can be:
-* A single integer, in which case the 3 digits (required) of this integer will be split and evaluated as 3 integers
-* 3 integers, corisponding to (*nrows*, *ncols*, *index*).
-* An instance of `Subplot`
+`*args`: can be, a single integer, 3 integers corresponding to (*nrows*, *ncols*, *index*), or an instance of `Subplot`
 
 In the case it is an instance of `Subplot`, it will have a few optional parameters
 
-- **`projection`**: An optinal parameter, that represents the projection type of the subplot `Axes`. 
+- **`projection`**: An optional parameter, that represents the projection type of the subplot `Axes`. 
 - **`polar`**: An optional boolean parameter, which is True of the subplot is polar.
 - **`sharex, sharey`**: An optional instance of `Axes`. Share the x or y `Axis` with the other Axes subplots. 
 - **`label`**.
@@ -90,24 +78,24 @@ The [GridSpec](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotl
 
 ```
 __init__(self, nrows, ncols, figure=None,
-                 left=None, bottom=None, right=None, top=None,
-                 wspace=None, hspace=None,
-                 width_ratios=None, height_ratios=None):
+         left=None, bottom=None, right=None, top=None,
+         wspace=None, hspace=None,
+         width_ratios=None, height_ratios=None):
 ```
 
 The parameters are fairly straight forward:
 
 `nrows, ncols`: an integer that represents the number of rows or columns for the subplot grid. 
 
-`height_ratios, width_ratios`: An array like object of length `nrows` or `ncols` that is a ratio of the space for each column. All entries in the array do not need to sum to 1, but ratios are calculated as `x_ratios[i]/sum(x_ratios)`
+`height_ratios, width_ratios`: An array like object of length `nrows` or `ncols` that is a ratio of the space for each column. 
 
-`left, right, top, bottom`: An optional parameter, a float that is the extent of the subplots as a fraction of figure width or height. Left cannot be larger than right, and bottom cannot be larger than top. Infered from rcParams if not specified. 
+`left, right, top, bottom`: An optional parameter, a float that is the extent of the subplots as a fraction of figure width or height.
 
-`wspace, hspace`: floats that represent the spacing between subplots as a fraction of the axis width or height. Infered from rcParams if not specified
+`wspace, hspace`: floats that represent the spacing between subplots as a fraction of the axis width or height. 
 
 ## SubplotBase and `subplot_class_factory()`
 
-SubplotBase class can be found at [`_subplots.py`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_subplots.py#L11). A baseclass for `Subplots`, and an instance of the `Axes` class. The class also defines methods for generating and manipulating a set of `Axes` within a figure.
+The [`SubplotBase`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_subplots.py#L11) is a baseclass for `Subplot`, and an instance of the `Axes` class. The class also defines methods for generating and manipulating a set of `Axes` within a figure.
 
 ```
 def __init__(self, fig, *args, **kwargs):
@@ -115,12 +103,10 @@ def __init__(self, fig, *args, **kwargs):
 
 It takes the ame method parameters as `Figure.add_subplot()`, but it also takes an instance of the `Figure` class.
 
-[`subplot_class_factory(axes_class=None)`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_subplots.py#L180) is a method that can be found in the same file, and it's main purpose is to make a new class that inherits from `.SubplotBase` and the given axes_class (which is assumed to be a subclass of `.axes.Axes`).
-
-If `axes_class` is not specified, it defaults to `Axes`.
+[`subplot_class_factory()`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_subplots.py#L180) is a method that can be found in the same file, and it's main purpose is to make a new class that inherits from `SubplotBase` and the given axes_class (which is assumed to be a subclass of `Axes`).
 
 ## Design Patterns Observed
 
-There is a factory pattern from `subplot_class_factory()`, as it produces a list of `SubplotBase` instances with every call. The flexability to create and add `subplots` to a `figure` this way makes things very simple to understand, and easy to use. 
+We can see a **Factory Design Pattern** in the `subplot_class_factory()` function, as it produces a list of `SubplotBase` instances with every call. The flexibility to create and add multiple `Subplot`s to a `Figure`.
 
-The use of `Figure` and other classes to act as wrappers help to keep the code managable, and reduces the amount of repeated code. I really like how you can manipulate and create a single `figure` object to manage multiple subplots, with a great deal of control over each one individually. 
+The use of `Figure` and other classes to act as wrappers help to keep the code managable, and reduces the amount of repeated code. It is great that one can manipulate and create a single `Figure` object to manage multiple subplots, with a great deal of control over each one individually. 

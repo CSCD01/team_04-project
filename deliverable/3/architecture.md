@@ -33,3 +33,13 @@ For a full breakdown of the scripting layer's structure: [details](./architectur
 This is the topmost layer. This layer provides a simple and clean scripting interface to allow for stateful interaction with visual components. The Scripting Layer has wrappers for the the Artist Layer's external methods as well as some Backend Layer classes/functionalities. It allows the user to interact with selected functions in each layer, with shorthand methods.
 
 The purpose of the scripting layer is to provide ease of use during interactive sessions with users, so that they can manipulate Figure objects indirectly. The Scripting Layer essentially revolves around [`Pyplot`](). While documenting Issue 1460, we learned more about `Pyplot`, particularly the `Pyplot.subplots()` method. 
+
+## Design Patterns ##
+
+### Factory Design Pattern ###
+
+[**`Axes` and `Container`**](./architecture_7876.md#design-patterns-observed)
+
+[**`FigureCanvasBase` and `Event`**](./architecture_backend.md#design-patterns-observed)
+
+[**`subplot_class_factory` and `SubplotBase`**](./architecture_1460.md#design-patterns-observed)

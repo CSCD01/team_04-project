@@ -2,7 +2,7 @@
 
 For the feature that we decided to work on (detailed in [Issue 7876](https://github.com/matplotlib/matplotlib/issues/7876)), we do not need to make any changes to the architecture as the implementation will be fully done inside the `errorbar` method located in [Axes.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086).
 
-In order to design this feature, we needed to analyze more how does the `Axes.errorbar()` method works and how it interacts with other classes and modules outside `Axes`. The `Axes.errorbar()` method returns an instance of `ErrorbarContainer` which extends from the `Container` class.
+In order to design this feature, we needed to analyze how the `Axes.errorbar()` method works, and it's interaction with other elements outside `Axes`. The `Axes.errorbar()` method returns an instance of `ErrorbarContainer` which extends from the `Container` class. These methods and classes are explained in more detail below.
 
 ![UML](./img/7876_uml_1.svg)
 
@@ -20,9 +20,9 @@ The `Container` class will group certain artists so the user can treat them as o
 
 ## Axes and `Axes.errorbar`
 
-The `Axes.errorbar()` is defined in [Axes.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086). It corresponds to the range of error, or the size of the errorbar `xerr, yerr` of a particular point `x, y` in a graph. Sometimes a particular point has no range of error, so `xerr, yerr` can be omitted. 
+The `Axes.errorbar()` method is defined in [Axes.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086). It corresponds to the range of error, or the size of the errorbar `xerr, yerr` of a particular point `x, y` in a graph. Sometimes a particular point has no range of error, so `xerr, yerr` can be omitted. 
 
-There are other styling parameters such as `fmt` (formatting the data points and data lines, `ecolor` (specifying the colour of the errorbar line), `elinewidth` (specifying the linewidth of the errorbar lines), which we will omit in this documentation.
+There are other styling parameters such as `fmt` (formatting the data points and data lines, `ecolor` (specifying the colour of the errorbar line), `elinewidth` (specifying the linewidth of the errorbar lines).
 
 The parameters for `errorbar` are described below, based on matplotlib documentation.
 
@@ -49,14 +49,10 @@ Here is a code snippet of where xerr and yerr are being handled. The `extract_er
 ```
 if xerr is not None:
     left, right = extract_err(xerr, x)
-    # select points without upper/lower limits in x and
-    # draw normal errorbars for these points
 ```
 ```
 if yerr is not None:
     lower, upper = extract_err(yerr, y)
-    # select points without upper/lower limits in y and
-    # draw normal errorbars for these points
 ```
 
 The `errorbar` method also defines two private functions [`xywhere()`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3319) and more importantly, [`extract_err()`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3330). This function takes two iterables `err` (which defines the errors for each data point), and `data` (the data points). Then it adds/subtracts those errors onto the data points and returns the upper and lower limit errors for the data. 
@@ -71,7 +67,7 @@ def extract_err(err, data):
 
 ## Design Patterns Observed
 
-The choice of using a `Container` class to group related artists helps to manage them as such instead of doing it individually. As the `Container` class is easily extendible, other subclasses can be implemented if a grouping is necessary.
+We can see the **Factory Design Pattern** in the relationship between `Axes` and `Container` classes. The `Container` class groups related artists, allowing for easier managing of these objects. As the `Container` class is easily extendible, other subclasses can be implemented if a grouping is necessary.
 
 The `Axes.errorbar()` method from the `Axes` class returns the `ErrorbarContainer` which will tell the `Artist` what needs to be plotted. In other words, the `ErrorbarContainer` is in charge of plotting the error bars in the graph taking off the responsibility from the `Axes` class. There are similar methods such as `Axes.bar()` which returns a `BarContainer`, and `Axes.stem()` which returns a `StemContainer`.
 

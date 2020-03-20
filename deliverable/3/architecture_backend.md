@@ -48,7 +48,16 @@ An example of a **Vector** backend is `BackendSVG`, which uses `FigureCanvasSVG`
 
 The Backend Layer also provides classes that support event handling.
 
-- [`Event`]() is extended by `MouseEvent`, `ResizeEvent`, and `DrawEvent`. Different event classes are responsible for handling user input, such as keyboard strokes and mouse movement. As mentioned earlier, the `FigureCanvas` creates these `Event` instances and passes them to related methods. Thus, `Event` has a reference to the `FigureCanvas` that created it.
+- [`Event`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/backend_bases.py#L1179) is extended by `MouseEvent`, `ResizeEvent`, and `DrawEvent`. Different event classes are responsible for handling user input, such as keyboard strokes and mouse movement. As mentioned earlier, the `FigureCanvas` creates these `Event` instances and passes them to related methods. Thus, `Event` has a reference to the `FigureCanvas` that created it.
 - [`TimerBase`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/backend_bases.py#L1023) supports event timing and callbacks through methods such as `TimerBase.start()`, `TimerBase.stop()`, and `TimerBase.add_callback()`, and `TimerBase.remove_callback()`. As mentioned earlier, `FigureCanvasBase.new_timer()` creates and returns these.
 
 ![Backend Layer UML](./img/UML_Backend_Layer.svg)
+
+## Design Patterns Observed
+
+We can see the **Factory Design Pattern** in the relationship between `FigureCanvasBase` and `Event` classes. As mentioned earlier, an `Event` is a base class for events such as `ScrollEvent`, `DrawEvent`, and `CloseEvent`. The `FigureCanvasBase` has methods that creates appropriate `Event` classes and passes them to related methods. Thus, the instantiation of `Event` subclasses are never made directly, but through these methods. 
+
+`FigureCanvasBase.draw_event()`, `FigureCanvasBase.close_event()` and `FigureCanvasBase.scroll_event()`, each create an instance of `DrawEvent`, `CloseEvent`, and `ScrollEvent`, respectively, passing them to the methods related to these events.
+
+![Design Pattern](./img/UML_Backend_Layer_Design_Pattern.svg)
+
