@@ -2,7 +2,7 @@
 
 ### The 3-tiered Architecture
 
-The current architecture of matplotlib is based around creating, rendering, and updating `Figure` objects. It consists of three stacked up layers. The **encapsulation** of Matplotlib is in such a way that each layer in the stack is only aware of and interacts with lower levels which results in an appropriate distribution of complexity. Each layer is responsible for a particular functionality such as event-based interactions, visual component abstraction and creation, or stateful user interaction.
+The current architecture of matplotlib is based around creating, rendering, and updating `Figure` objects. It consists of three layers. The **encapsulation** of matplotlib is in such a way that each layer in the stack is only aware of and interacts with lower levels which results in an appropriate distribution of complexity. Each layer is responsible for a particular functionality such as event-based interactions, visual component abstraction and creation, or stateful user interaction.
 
 ![Top level Diagram](./img/UML_Top_Level.svg)
 
@@ -10,15 +10,13 @@ The current architecture of matplotlib is based around creating, rendering, and 
 
 For a full breakdown of the backend layer's structure: [details](./architecture_backend.md).
 
-The lowest level in the stack of layers. It is responsible for encapsulating the canvas that is being drawn on, implementing the drawing on the canvas. 
-
-Through the backend layer, Figures can be displayed (on the canvas). It is a layer of abstraction over components that can render a Figure. This layer is also responsible for handling event-based interactions (interacting with figures through keyboard and mouse inputs). There are interactive (user-interface) backends, and also non-interactive (hard copy) backends.
+This is the bottom layer. It is responsible for encapsulating the canvas that is being drawn on, implementing the drawing on the canvas. The backend layer defines different classes, each having separate responsibilities, all working together to display a `Figure`. This layer is also responsible for handling event-based interactions (interacting with figures through keyboard and mouse inputs). As for backend implementations, there are both interactive (user-interface) backends, and also non-interactive (hard copy) backends.
 
 ### Artist Layer
 
 For a full breakdown of the artist layer's structure: [details](./architecture_artist.md).
 
-The middle layer of matplotlib's architecture. This layer's main responsibility is the abstraction of all visual components.  The artist layer mainly interacts with the Backend layer through the `draw()` method that is implemented by all the classes in the Artist layer. There is one main class `Artist`, and various implementations in two primary categories: Primitive, and Composite.
+This is the middle layer. It is responsible for defining all the visual components that can be rendered inside a `Figure`. The Artist Layer mainly interacts with the Backend Layer through the `Artist.draw()` method that is implemented by all subclasses of `Artist`. 
 
 The more important Artist Layer classes are perhaps the `Axes` and `Figure` classes. While documenting Issue 7876, we learned more about `Axes` methods, particularly `Axes.errorbar()`, and the design patterns within this class. We also learned about the `Container` class which is used to gather similar `Artist` objects. 
 
@@ -30,10 +28,8 @@ While documenting Issue 1460, we also learned more about `Figure` methods, parti
 
 ### Scripting Layer
 
-This layer is a wrapper around the Artist and Backend layers. For a full breakdown of the scripting layer's structure: [details](./architecture_scripting.md).
+For a full breakdown of the scripting layer's structure: [details](./architecture_scripting.md).
 
-The highest level of the stack. This layer provides a simple and clean scripting interface to allow for stateful interaction with visual components. The Scripting layer has wrappers for the the Artist Layer's external methods as well as some Backend Layer classes/functionalities. It allows the user to interact with selected functions in each layer, with reduced verbosity and flexibility.
+This is the topmost layer. This layer provides a simple and clean scripting interface to allow for stateful interaction with visual components. The Scripting Layer has wrappers for the the Artist Layer's external methods as well as some Backend Layer classes/functionalities. It allows the user to interact with selected functions in each layer, with shorthand methods.
 
-The purpose of the scripting layer is to provide ease of use during interactive sessions with users, so that they can manipulate Figure objects indirectly. This is typically meant for data visualization purposes where the user does not need the full power of the artists' API.
-
-The Scripting Layer essentially revolves around [`Pyplot`](). While documenting Issue 1460, we learned more about `Pyplot`, particularly the `Pyplot.subplots()` method. 
+The purpose of the scripting layer is to provide ease of use during interactive sessions with users, so that they can manipulate Figure objects indirectly. The Scripting Layer essentially revolves around [`Pyplot`](). While documenting Issue 1460, we learned more about `Pyplot`, particularly the `Pyplot.subplots()` method. 
