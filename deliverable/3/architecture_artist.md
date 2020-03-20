@@ -2,7 +2,7 @@
 
 The Artist Layer defines visual components that are contained in a `Figure`. Every visual element you see in a `Figure`, such as lines, shapes, axes and ticks, are all `Artist` objects.
 
-All these objects are a subclass of [`Artist`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/artist.py), which define methods and properties that are shared across all `Artist` implementations. One such method is [`Artist.update()`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/artist.py#L972). Each `Artist` implementation can be customized with style properties (e.g. we can specify the `color`, `linestyle`, and `linewidth` of `Line2D`). `Artist.update()` takes these properties and applies them to the `Artist` instance. 
+All these objects are a subclass of [`Artist`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/artist.py), which defines methods and properties that are shared across all `Artist` implementations. One such method is [`Artist.update()`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/artist.py#L972). Each `Artist` implementation can be customized with style properties (e.g. we can specify the `color`, `linestyle`, and `linewidth` of `Line2D`). `Artist.update()` takes these properties and applies them to the `Artist` instance. 
 
 As mentioned previously, the Artist Layer can interact with the Backend Layer. One such method that allows that is the [`Artist.draw()`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/artist.py#L902) method. This method uses a `renderer` (an instance of `RendererBase`) to draw itself, the `Artist`, on the `FigureCanvas`. 
 
