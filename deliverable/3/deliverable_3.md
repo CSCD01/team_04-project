@@ -22,7 +22,9 @@ We have documented, designed, created acceptance tests, and implementation plans
 
 ## Architecture Revisited ##
 
-We have revisited the architecture of matplotlib. Based on knowledge we've gained from previous deliverables (and this deliverable), we present a higher level architecture description [here]().
+We have revisited the architecture of matplotlib. Based on knowledge we've gained from previous deliverables (and this deliverable), we present a higher level architecture description.
+
+[High Level Architecture](./architecture.md)
 
 We also took a more granular look at the components affected both the features we have documented.
 
