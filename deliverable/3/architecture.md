@@ -43,3 +43,7 @@ The purpose of the scripting layer is to provide ease of use during interactive 
 [**`FigureCanvasBase` and `Event`**](./architecture_backend.md#design-patterns-observed)
 
 [**`subplot_class_factory` and `SubplotBase`**](./architecture_1460.md#design-patterns-observed)
+
+### Facade Design Pattern ###
+
+[**`Pyplot`**](./architecture_scripting.md#design-patterns-observed)

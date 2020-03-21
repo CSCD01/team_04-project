@@ -2,32 +2,32 @@
 
 ## Pyplot Interface
 
-Pyplot allows the Scripting Layer to act as a wrapper of the Artist and Backend Layers, where the implementation of these functions occur. Pyplot is the user interface to simplify the task of working with the other two layers.
+`Pyplot` allows the Scripting Layer to act as a wrapper of the Artist and Backend Layers, where the implementation of these functions occur. Pyplot is the user interface to simplify the task of working with the other two layers.
 
-The user can either work with the Artist and Backend Layers directly or use the Scripting Layer instead, where they do not need to initialize figures or specify their preferred backend. Pyplot will select the default backend (or the previously configured one) and call a `setup()` method that will initialize the appropriate objects needed given the selected backend (interactive or hardcopy) .
+The user can either work with the Artist and Backend Layers directly or use the Scripting Layer instead, where they do not need to initialize `Figure`s or specify their preferred `Backend`. `Pyplot` will select the default backend (or the previously configured one) and call a `setup()` method that will initialize the appropriate objects needed given the selected backend (interactive or hardcopy) .
 
-The pyplot interface provides the following functions (non-exhaustive) to manage the components returned by the `setup()` method:
+The `Pyplot` interface provides the following functions (non-exhaustive) to manage the components returned by the `setup()` method:
 
 ### Artist Layer wrappers
 
-- `plot()`: calls the current `Figure`’s Axes object’s `plot()` method and the `draw()` method of the `FigureCanvas`
-- `figure()`: creates or activates a new `Figure`
-- `savefig()`: saves the current `Figure`
-- `axes()`: adds an `Axes` to the current `Figure` and makes it the current `Axes`
-- `gcf()`: returns the current `Figure`
-- `sca(ax)`: sets the current `Axes` to `ax` and the current `Figure` to the parent of `ax`
+- `plot()`: calls the current `Figure`’s Axes object’s `plot()` method and the `draw()` method of the `FigureCanvas`.
+- `figure()`: creates or activates a new `Figure`.
+- `savefig()`: saves the current `Figure`.
+- `axes()`: adds an `Axes` to the current `Figure` and makes it the current `Axes`.
+- `gcf()`: returns the current `Figure`.
+- `sca(ax)`: sets the current `Axes` to `ax` and the current `Figure` to the parent of `ax`.
 
 ### Backend Layer wrappers
-- `draw()`: redraws the current `Figure`
-- `get_current_fig_manager()`: returns the current  `FigureManager`
+- `draw()`: redraws the current `Figure`.
+- `get_current_fig_manager()`: returns the current  `FigureManager`.
 - `switch_backend()`: allows the user to change the selected backend
-- `show()`: displays all figures
+- `show()`: displays all figures.
 
 ![Scripting Layer UML](./img/UML_Scripting_Layer.svg)
 
 ## Benefits of Pyplot
 
-`Pyplot`'s main goal is to simplify the use of `Matplotlib` by grouping some functions where some tasks are taken over by one method instead of multiple methods. For example, a `Figure` does not need to be initialized before starting to plot, as `Pyplot` will have a default `Figure` and `FigureCanvas` to use if it has not being specified. In other words, the first plot instruction that will be called would get assigned the tasks to create a `Figure` and `FigureCanvas`.
+`Pyplot`'s main goal is to simplify the use of matplotlib by grouping some functions where some tasks are taken over by one method instead of multiple methods. For example, a `Figure` does not need to be initialized before starting to plot, as `Pyplot` will have a default `Figure` and `FigureCanvas` to use if it has not being specified. In other words, the first plot instruction that will be called would get assigned the tasks to create a `Figure` and `FigureCanvas`.
 
 Below there is an example of plotting a linear graph of range 0 to 5 using both matplotlib directly and `Pyplot`. On the first lines of code, we need to initialize the figure by calling the `Figure` method from `Artist`, then, we need to create a canvas using that empty `Figure`. After that is done, we need to indicate where we want to draw the `Axes`. By using `fig.add_subplot(111)`, we indicate that we want to subdivide out canvas in a 1 by 1 grid and plot our `Axes` in the first (and only) grid.
 
@@ -71,3 +71,9 @@ plt.show()
 ```
 
 ![example](./img/pyplot_example.png)
+
+## Design Patterns Observed
+
+We can see that `Pyplot` itself is an example of the **Facade Design Pattern** as it hides the complex instantiation and interaction between the Artist and Backend Layer. Without `Pyplot`, the user would have to select and update their own `Figure` and `Artist` objects, as well as the backend. The user would have to manage and update these instances themselves, which can get complicated.
+
+`Pyplot` creates shorthand methods for common tasks done with matplotlib, acting as an API. One such method is `Pyplot.subplots()`, which combines the task of creating and adding subplots, and instantiating their containing `Figure`.  
