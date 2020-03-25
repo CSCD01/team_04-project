@@ -2,7 +2,7 @@
 
 ## Description
 
-This change request is about the behaviour of errorbars when supplied with an “infinite” range of error. The change request requested that “infinite” errors would be displayed with an error range that exceeds the frame size. This would serve as an intuitive visual that there is an “infinite” error range. Currently, when a data point has an error of `inf`, this would result in no errorbar for that particular data point. The same behaviour is seen when a data point has an error of `nan`. This behaviour can cause confusion, because one can argue that `nan` and `inf` are not really the same value.
+Currently, errorbars behave unintuitively for datapoints that have non-number (`nan` or `inf`) error values; the errorbars are omitted altogether. This behaviour can cause confusion, because one can argue that `nan` and `inf` are not really the same value. 
 
 The following example shows that both `nan` and `inf` errorbars are plotted the same way. The user is unable to distinguish the errorbars from each other.
 
@@ -25,13 +25,11 @@ plt.show()
 
 ![outcome](./img/7876_outcome.png)
 
-There has been some discussion about the meaning of an infinite error, and whether `inf` should be viewed as `undefined`. However, the change request is about the representation. 
-
-How should we then represent an `inf` errorbar? One option is to show an errorbar that extends the axes frame. The following image shows this.
+The requested change is about the representation of `inf` errorbars. There are two main representation for `inf` that can be considered. Option one: an error bar that extends axes frames. The following image shows this.
 
 ![expected](./img/7876_expected2.png)
 
-Another proposed solution is to either remove the data point, or to plot a different symbol representing the infinite errorbar. We have to be careful when choosing the appropriate symbol, so that the user can easily interpret it as the `inf` errorbar. The following image shows this. 
+The other option is to either remove the data point, or to plot a different symbol representing the infinite errorbar. We have to be careful when choosing the appropriate symbol, so that the user can easily interpret it as the `inf` errorbar. The following image shows this. 
 
 ![expected](./img/7876_expected.png)
 
@@ -65,7 +63,9 @@ def errorbar(self, x, y, yerr=None, xerr=None,
 - **`shape(2,N)`**: each of the data-points can have a range of asymmetric errors. There are two rows; the first row describing the lower (-) errors, and the second row describing the upper (+) errors. 
 - **`None`**: no errorbar.
 
-`lolims`, `uplims`, `xololims`, and `xuplims`. These indicate whether or not a value only honours upper/lower limits (y-axis), or x-upper/x-lower limits (x-axis). A special caret symbol indicates that only a certain limit dimension is honoured. 
+`lolims`, `uplims`, `xololims`, and `xuplims`. These are booleans indicating whether or not a value only honours upper/lower limits (y-axis), or x-upper/x-lower limits (x-axis). A special caret symbol indicates that only a certain limit dimension is honoured. 
+
+![Image](./img/7876_lims.png)
 
 Here is a code snippet of where xerr and yerr are being handled. The `extract_err` method is described afterwards.
 
@@ -104,4 +104,4 @@ The `errorbar` method returns an instance of `ErrorbarContainer`.
     - `data_line`: an instance of `Line2D` which describes a line corresponding to data points.
     - `caplines`: a tuple of `Line2D` which correspond to the cap lines (tip of error range) for each data point.
     - `barlinecols`: a list of `LineCollection` corresponding to the error ranges.
-- `xerr`/`yerr`: a boolean which is `True` if the errorbar has `x`/`y` errors, and `False` otherwise.
+- `xerr`/`yerr`: a boolean which is `True` if the errorbar has `x`/`y` errors, and `False` otherwise. More specifically `xerr` is `True` if there are errorbars affecting the `x`-coordinates for datapoints. `yerr` is similar.
