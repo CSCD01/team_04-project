@@ -45,7 +45,11 @@ However, we also thought that simply having a special marker for the `inf` error
 
 In addition to the proposed changes, a similar approach can be applied to `nan` errorbars. We can allow users to choose a symbol representation of a `nan` errorbar. Meanwhile, we can make these changes optional to the user, by maintaining the default representations of both `inf` and `nan` errorbars.
 
-Note that there are no architectural changes involved in implementing this feature. There may be an additional parameter and a helper function in `Axes.errorbar()`, so this would count as an API change.
+Note that there are **no architectural changes** involved in implementing this feature. However, we have made comments on how `Axes.errorbar()` interacts with other components.
+
+### [Architecture](./architecture.md) ###
+
+There may be an additional parameter and a helper function in `Axes.errorbar()`, so this would count as an API change.
 
 ## Planned Implementation ##
 
