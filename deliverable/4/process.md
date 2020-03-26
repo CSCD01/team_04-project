@@ -33,4 +33,6 @@ Here are some snapshots of the Trello board throughout the **Requirements Gather
 
 ![trello 3](./img/trello_3.png)
 
+![trello 4](./img/trello_4.png)
+
 The commit marking the end of this phase was [751991a](https://github.com/CSCD01/team_04-project/commit/751991aaf324c8e9755c242efc21692953e5f7de). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/751991aaf324c8e9755c242efc21692953e5f7de/deliverable/4/deliverable_4.md).
