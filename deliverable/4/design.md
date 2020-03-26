@@ -31,18 +31,74 @@ In line 3407, the y-error range is handled. This works similarly to how the x-er
 
 Finally, an `ErrorbarContainer` instance is created, to house the `data_line`, `caplines`, and `barcols`. We also specify if the errors were for the y-direction, the x-direction, or both.
 
-## Changes ##
+## Discussion of Changes ##
 
 Previously we described two options for displaying an `inf` errorbar.
 
 The **first option** is to display an errorbar extending the frame size, to symbolize an infinite error range. The **second option** is to display a special marker on the data point, to symbolize the special value of `inf`.
 
-It seems that there is currently no functionality in matplotlib that extends a graph beyond the framesize. Changing this behaviour seems overkill for an edge case such as an infinite range of error. Choosing not to extend the errorbar beyond the frame size would greatly reduce the API changes needed. Normally, the axes scales defines the range of the x and y axes depending on the plot data given. This is so that every data point is contained within the frame, including the range of errorbars.
+It seems that there is currently no functionality in matplotlib that extends a graph beyond the framesize. Changing this behaviour seems overkill for an edge case such as an infinite errorbar. Choosing not to extend the errorbar beyond the frame size would reduce the API changes needed. Normally, the range of the x and y axes are defined based on the given plot data. Every data point is contained within the frame, including the range of errorbars.
 
-The most we should do, along the same lines, would be to plot an errorbar that extends to the upper and lower bounds of the plot data. We could accompany this with a special symbol, and omit the caplines (if any), indicating that unbounded error. 
+The most we should do is plot an errorbar that extends to the upper and lower bounds of the plot data. We could accompany this with a special symbol, and omit the caplines (if any), indicating that unbounded error. 
 
 However, we also thought that simply having a special marker for the `inf` errorbar would be a cleaner (albeit less intuitive) representation. Thus, we think this choice should be deferred to the user. Within the `Axes.errorbar()` method, we could allow the user to choose how to represent an `inf` error. 
 
-In addition to the changes proposed, a similar approach to the second option can be taken for the error `nan`. A special marker or symbol can be displayed on the data point to explicitly indicate the error range. In that case, the user could add special markers for both a `nan` and `inf` error for a better representation. Meanwhile, we can make these changes optional to the user, by maintaining the default representations of these errorbars.
+In addition to the proposed changes, a similar approach can be applied to `nan` errorbars. We can allow users to choose a symbol representation of a `nan` errorbar. Meanwhile, we can make these changes optional to the user, by maintaining the default representations of both `inf` and `nan` errorbars.
 
 Note that there are no architectural changes involved in implementing this feature. There may be an additional parameter and a helper function in `Axes.errorbar()`, so this would count as an API change.
+
+## Planned Implementation ##
+
+Here we will write in more detail how we plan to implement the changes described in **Design Choices**. There, we detailed 4 changes we were going to make.
+
+1. Create a special symbol in the case of a `nan` error range.
+2. Allow the user to specify how the `inf` and `nan` error range is represented.
+3. Create a special symbol in the case of an `inf` error range.
+4. Handle the case of an `inf` error range by drawing an errorbar that extends to the upper and lower limits of the data line.
+
+We will go through each of these changes and how they would be implemented, below. Note that all of these changes are to be made in the `Axes.errorbar()` method.
+
+### Special symbol for `nan` errorbar ###
+
+One of the changes will be in the private method `Axes.errorbar.extract_err(data, err)`. Currently, list comprehension is used to add and subtract the error ranges, as below.
+
+```
+low = [v - e for v, e in zip(data, a)]
+high = [v + e for v, e in zip(data, b)]
+```
+
+This will not work when dealing with an `e` value of `nan`. Thus, we need to modify this function somehow, and account for an `e` value of `nan`.
+
+We also need to add a case to when handling `if xerr is not None` in [line 3366](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366). We need to handle the `inf` case for all three sub-cases.
+
+```
+if noxlims.any() or len(noxlims) == 0:
+```
+```
+if xlolims.any():
+```
+and
+```
+if xuplims.any():
+```
+For all data points with an errorbar of `nan`, then we add a special type of marker for that errorbar. We handle similarly for `if yerr is not None` in [line 3415](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3415). 
+
+### Handling user choice of representing `inf` and `nan` errorbar ###
+
+This change would be in the `Axes.errorbar()` method. Firstly, we need to be prepared to handle an extra parameter, say `inf_repr`. This extra parameter is a `str` describing how the user wants the `inf` errorbar to be represented. For now, we only handle three possible values: `None`, `'bar'` or `'symbol'`. We would need to add documentation on the usage of `inf_repr` in the docstring. Depending on the value of `inf_repr`, we change the representation of the errorbar, as described below. To allow for backwards compatibility, if `inf_repr=None`, or `nan_repr=None`, then we maintain the same representation as now.   
+
+### Special symbol for `inf` errorbar ###
+
+This change would be similar to handling the special symbol for a `nan` errorbar. This change would also be in the private method `Axes.errorbar.extract_err(data, err)`. Similarly to the above, we add another case checking for the value of `inf` when using list comprehension.
+
+Note that we only choose this representation if `inf_repr='symbol'`. As with the symbol for `nan`, we add a special type of marker for all data points with an errorbar of `inf` to each of the three sub-cases found when handling [`xerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366), and [`yerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3415).
+
+### Special long errorbar for `inf` ###
+
+This change would also be in the private method `Axes.errorbar.extract_err(data, err)`. As above, we use the case for handling `inf` when using list comprehension. We only choose this representation if `inf_repr='bar'`. To get an errorbar that extends to the lower and upper limits of the data line, we would need to calculate the upper and lower limits of `data_line`, and supply that instead of `v - e` or `v + e`. 
+
+Then, when handling the [`xerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366) and [`yerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3415) we provide a special errorbar extending for this range. We will omit the capline (if needed) to represent an unbounded error.
+
+## Time Estimate
+
+Implementing the above steps, if all goes well, should take about 16-24 hours. We are taking into account any subtleties we have missed during documentation and design. Testing the feature and documenting it (i.e. adding to docstring) should take about 8-16 hours.
