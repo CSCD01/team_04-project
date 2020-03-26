@@ -53,7 +53,7 @@ There may be an additional parameter and a helper function in `Axes.errorbar()`,
 
 ## Planned Implementation ##
 
-Here we will write in more detail how we plan to implement the changes described in **Design Choices**. There, we detailed 4 changes we were going to make.
+Here we will write in more detail how we plan to implement the changes described above. There, we detailed 4 changes we were going to make.
 
 1. Create a special symbol in the case of a `nan` error range.
 2. Allow the user to specify how the `inf` and `nan` error range is represented.
@@ -70,7 +70,7 @@ For all data points with an errorbar of `nan`, then we add a special type of mar
 
 ### Handling user choice of representing `inf` and `nan` errorbar ###
 
-This change would be in the `Axes.errorbar()` method. Firstly, we need to be prepared to handle an extra parameter, say `inf_repr`. This extra parameter is a `str` describing how the user wants the `inf` errorbar to be represented. For now, we only handle three possible values: `None`, `'bar'` or `'symbol'`. We would need to add documentation on the usage of `inf_repr` in the docstring. Depending on the value of `inf_repr`, we change the representation of the errorbar, as described below. To allow for backwards compatibility, if `inf_repr=None`, or `nan_repr=None`, then we maintain the same representation as now.   
+This change would be in the `Axes.errorbar()` method. Firstly, we need to be prepared to handle an extra parameter, say `inf_repr`. This extra parameter is a `str` describing how the user wants the `inf` errorbar to be represented. For now, we only handle three possible values: `None`, `'bar'` or `'symbol'`. We would need to add documentation on the usage of `inf_repr` in the docstring. Depending on the value of `inf_repr`, we change the representation of the errorbar, as described below. To allow for backward compatibility, if `inf_repr=None`, or `nan_repr=None`, then we maintain the same representation as now.   
 
 ### Special symbol for `inf` errorbar ###
 
