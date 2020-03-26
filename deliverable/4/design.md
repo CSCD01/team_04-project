@@ -6,13 +6,13 @@ We would need to change how we handle the inputs `xerr`, and `yerr`, to account 
 
 ## Tracing ##
 
-To get an idea of how this change would need to fit in, it would be helpful to trace the `Axes.errorbar()` method. As mentioned previously, it takes parameters for the data points `x`,`y`, and the error ranges `xerr`,`yerr`. First, these parameters are turned into iterables, if they are not already. If `x='7'`, then it is converted to `x=['7']`. And if the error ranges are specified as, for example, `xerr='3'`, and there are 4 data points, then it is converted to `x=['3','3','3']`. 
+To get an idea of how this change would need to fit in, it would be helpful to trace the `Axes.errorbar()` method. As mentioned previously, it takes parameters for the data points `x`,`y`, and the error ranges `xerr`,`yerr`. First, these parameters are turned into iterables, if they are not already. For example `x='7'` is converted to `x=['7']`. And if the error ranges are specified as, for example, `xerr='3'`, and there are 4 data points, then it is converted to `x=['3','3','3','3']`. 
 
-In lines 3248 to 3297, the styles are applied for the plot, including the data line, and the errorbars (with barlines and caplines), and their associated markers. 
+In lines 3248 to 3297, the styles are applied for the plot, including the data line, and the errorbars (with barlines and caplines), with their associated markers. 
 
-`xololims`, `xuplims`, `uplims`, and `lolims` are also converted into iterables so that they are compatible when processing data points.
+`xololims`, `xuplims`, `uplims`, and `lolims` are also converted into iterables for compatibility when processing data points.
 
-In line 3322, there is a method `extract_err(err, data)`. As mentioned previously, this method parses the iterable `err` and adds/subtracts them to the data points `data`. It checks that `err` (which would either be `yerr` or `xerr`), is in the proper format. Recall that they must either be a `scalar`, or a `1D`/`(2,n)` array-like. If the format of `err` is valid, then it proceeds to add these error ranges to each data point. In lines 3354 and 3355, it does this using list comprehension.
+In line 3322, there is a method `extract_err(err, data)`. As mentioned previously, this method parses the iterable `err` and adds/subtracts them to the data points `data`. It checks that `err` (which would either be `yerr` or `xerr`), is in the proper format. Recall that they must either be a `scalar`, or a `1D`/`(2,n)` array-like. If the format of `err` is valid, then the method proceeds to add these error ranges to each data point. In lines 3354 and 3355, it does this using list comprehension.
 
 ```
 low = [v - e for v, e in zip(data, a)]
@@ -21,7 +21,7 @@ high = [v + e for v, e in zip(data, b)]
 
 Two arrays `low, high` are returned. `low` holds the lower error bounds, while `high` holds the upper error bounds.
 
-In line 3358, the x-error range is handled. The left and right error bounds are extracted using the `extract_err()` method. Recall `xlolims` and `xuplims`. It checks if there are any data points that don't have such limits. If so, then we draw normal error bars for those data points. The errorbars for these points are defined in this block, and appended to the list of `barlines` and `caplines`.
+In line 3358, the x-error range is handled. The left and right error bounds are extracted using the `extract_err()` method. Recall `xlolims` and `xuplims` which checks if there are any data points that don't have such limits. If so, then we draw normal error bars for those data points. The errorbars for these points are defined in this block, and appended to the list of `barlines` and `caplines`.
 
 If there are any data points for which we only want to draw the lower x-limits (left), then `xlolims` would be `True` for that point. The errorbar is drawn only for the left side of the data point, and a special caret symbol on the right.
 
