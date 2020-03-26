@@ -18,7 +18,7 @@ The `Container` class will group certain artists, which makes it easier for user
 
 ## Axes and `Axes.errorbar`
 
-The `Axes.errorbar()` method is defined in [axes.py](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086). It corresponds to the range of error, or the size of the errorbar `xerr, yerr` of a particular point `x, y` in a graph. Sometimes a particular point has no range of error, so `xerr, yerr` can be omitted. 
+The [`Axes.errorbar()`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3086) method takes as input a set of data points, and the error ranges for those data points. It then applies those errors to the data points as errorbars. The data points and their errors are returned in a `Container`.
 
 There are other styling parameters such as `fmt` (formatting the data points and data lines, `ecolor` (specifying the colour of the errorbar line), `elinewidth` (specifying the linewidth of the errorbar lines).
 
@@ -64,11 +64,3 @@ def extract_err(err, data):
     high = [v + e for v, e in zip(data, b)]
     return low, high
 ```
-
-## Design Patterns Observed
-
-We can see the **Factory Design Pattern** in the relationship between `Axes` and `Container` classes. The `Container` class groups related artists, allowing for easier managing of these objects. As the `Container` class is easily extendible, other subclasses can be implemented if a grouping is necessary.
-
-The `Axes.errorbar()` method from the `Axes` class returns the `ErrorbarContainer`. There are similar methods such as `Axes.bar()` which returns a `BarContainer`, and `Axes.stem()` which returns a `StemContainer`.
-
-![UML](./img/7876_uml_2.svg)
