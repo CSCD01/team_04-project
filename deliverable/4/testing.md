@@ -260,7 +260,7 @@ plt.show()
 
 The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the second point, the y errorbar should use the `'symbol'` representation for `inf`, vertically oriented, and the x errorbar should use the `'symbol'` representation for `nan`,  horizontally oriented. At the third point, the x errorbar should use the `'symbol'` representation for `nan`. At the fourth point, the y errorbar should use the `'symbol'` representation for `inf`. 
 
-## 7. `nan` 'symbol' and `inf` 'bar' plotted at data points
+## 7. `nan` symbol and `inf` bar plotted at data points
 
 The purpose of this test is to check the correctness of the `'symbol'` representation of the `nan` errorbar, and the `'bar'` representation of the ``inf` errorbar. We test the scenario when they are plotted on the same data point, and also when they are plotted at different data points
 
