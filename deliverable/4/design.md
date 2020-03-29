@@ -45,11 +45,15 @@ However, we also thought that simply having a special marker for the `inf` error
 
 In addition to the proposed changes, a similar approach can be applied to `nan` errorbars. We can allow users to choose a symbol representation of a `nan` errorbar. Meanwhile, we can make these changes optional to the user, by maintaining the default representations of both `inf` and `nan` errorbars.
 
-Note that there are no architectural changes involved in implementing this feature. There may be an additional parameter and a helper function in `Axes.errorbar()`, so this would count as an API change.
+Note that there are **no architectural changes** involved in implementing this feature. However, we have made comments on how `Axes.errorbar()` interacts with other components.
+
+### [Architecture](./architecture.md) ###
+
+There may be an additional parameter and a helper function in `Axes.errorbar()`, so this would count as an API change.
 
 ## Planned Implementation ##
 
-Here we will write in more detail how we plan to implement the changes described in **Design Choices**. There, we detailed 4 changes we were going to make.
+Here we will write in more detail how we plan to implement the changes described above. There, we detailed 4 changes we were going to make.
 
 1. Create a special symbol in the case of a `nan` error range.
 2. Allow the user to specify how the `inf` and `nan` error range is represented.
@@ -78,7 +82,7 @@ if xuplims.any():
 
 ### Handling user choice of representing `inf` and `nan` errorbar ###
 
-This change would be in the `Axes.errorbar()` method. Firstly, we need to be prepared to handle an extra parameter, say `inf_repr`. This extra parameter is a `str` describing how the user wants the `inf` errorbar to be represented. For now, we only handle three possible values: `None`, `'bar'` or `'symbol'`. We would need to add documentation on the usage of `inf_repr` in the docstring. Depending on the value of `inf_repr`, we change the representation of the errorbar, as described below. To allow for backwards compatibility, if `inf_repr=None`, or `nan_repr=None`, then we maintain the same representation as now.   
+This change would be in the `Axes.errorbar()` method. Firstly, we need to be prepared to handle an extra parameter, say `inf_repr`. This extra parameter is a `str` describing how the user wants the `inf` errorbar to be represented. For now, we only handle three possible values: `None`, `'bar'` or `'symbol'`. We would need to add documentation on the usage of `inf_repr` in the docstring. Depending on the value of `inf_repr`, we change the representation of the errorbar, as described below. To allow for backward compatibility, if `inf_repr=None`, or `nan_repr=None`, then we maintain the same representation as now.   
 
 ### Special symbol for `inf` errorbar ###
 

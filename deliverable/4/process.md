@@ -36,3 +36,21 @@ Here are some snapshots of the Trello board throughout the **Requirements Gather
 ![trello 4](./img/trello_4.png)
 
 The commit marking the end of this phase was [751991a](https://github.com/CSCD01/team_04-project/commit/751991aaf324c8e9755c242efc21692953e5f7de). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/751991aaf324c8e9755c242efc21692953e5f7de/deliverable/4/deliverable_4.md).
+
+## Design
+
+During the Design phase, we elaborate on the components affected by our new feature. We identify which methods and/or classes that we need to change. Then, we discuss multiple ways (if necessary) to implement our feature. We discuss the pros and cons of each approach (if there are multiple), reasons for proceeding with a specific approach, and possible risks associated with the implementation.
+
+Understanding the design choices would be difficult without knowledge of how the affected code works. Thus, we have included a **Tracing** section, which goes through the affected method `Axes.errorbar()`. We discuss what this method achieves, block by block. Then, we describe an overview of the possible implementations, and why we chose to move forward with a certain one, in the **Changes** section. We elaborate on the chosen implementation in the **Planned Implementation** section.
+
+The commit marking the start of this phase was [feaf07f](https://github.com/CSCD01/team_04-project/commit/feaf07f09f181b388ed878fcc029087f0d622a7b). The state of the deliverable at the start of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/feaf07f09f181b388ed878fcc029087f0d622a7b/deliverable/4/deliverable_4.md).
+
+Here are some snapshots of the Trellow board throughout the **Design** phase.
+
+![trello 5](./img/trello_5.png)
+
+![trello 6](./img/trello_6.png)
+
+![trello 7](./img/trello_7.png)
+
+The commit marking the end of this phase was [abdf278](https://github.com/CSCD01/team_04-project/commit/abdf278ad10a9fc8b0ab0c927cf8bb9cc8a8f58a). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/abdf278ad10a9fc8b0ab0c927cf8bb9cc8a8f58a/deliverable/4/deliverable_4.md).
