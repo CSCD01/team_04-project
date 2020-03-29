@@ -60,9 +60,21 @@ We will go through each of these changes and how they would be implemented, belo
 
 ### Special symbol for `nan` errorbar ###
 
-We also need to add a case to when handling `if xerr is not None` in [line 3366](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366). 
+We need to add a case to when handling `if xerr is not None` in [line 3366](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366). 
 
 For all data points with an errorbar of `nan`, then we add a special type of marker for that errorbar. We handle similarly for `if yerr is not None` in [line 3415](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3415). 
+We need to handle the `nan` case for all three sub-cases.
+
+```
+if noxlims.any() or len(noxlims) == 0:
+```
+```
+if xlolims.any():
+```
+and
+```
+if xuplims.any():
+```
 
 ### Handling user choice of representing `inf` and `nan` errorbar ###
 
