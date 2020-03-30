@@ -130,7 +130,7 @@ Lastly, we check the default case, when we do not specify the new representation
 
 Note that this test is very similar to the above unit test.
 
-Firstly, we plot a linear function with errorbars of 0.5 (each side) for each point. However, we change the errorbar at the point at `x = 1` to `nan`.
+Firstly, we plot a linear function with errorbars of 0.5 (each side) for each point. However, we change the errorbar at the point at `x = 1` to `inf`.
 
 ```
 def test_errorbar_inf_symbol():
@@ -229,4 +229,85 @@ Lastly, we check the default case, when we do not specify the new `'symbol'` rep
     assert len(caplines8)==0
 ```
 
-## 3. Then `'bar'` representation of the `inf` errorbar. ##
+## 3. The `'bar'` representation of the `inf` errorbar. ##
+
+For this unit test, we are checking the `'bar'` representation of the `inf` errorbar. This is a bit different as we are not using a symbol, and instead measuring the length of the caplines plotted.
+
+Firstly, we plot a linear function with errorbars of 0.5 (each side) for each point. However, we change the errorbar at the point at `x = 1` to `inf`.
+
+```
+def test_errorbar_inf_bar():
+    f, ax = plt.subplots()
+    x = np.arange(3)
+    y = 2*x # Plot exponential function
+    eb = np.array([0.5] * 3)
+    eb[1]=np.inf # Errorbar at position 1 is inf
+```
+
+Next, we check for the **y errorbar** cases. There are three subcases. 
+
+The first is when the `inf` bar is plotted **only above** the data point. We check that the capline position and length extends to the top of the axes frame.
+
+```
+    # Cases for y errorbar, bar representation of inf
+    # Check if lolims is True, then inf bar is plotted only above the data point
+    plotlines1, caplines1, barcols1 = ax.errorbar(x,y,yerr=eb,lolims=True,inf_repr="bar")
+    assert np.all(barcols1[1].get_segments()[0]==[[1.,2.],[1,4.]])
+```
+
+The second is when the `inf` bar is plotted **only below** the data point. We check that the capline position and length extends to the bottom of the axes frame.
+
+```
+    # Check if uplims is True, then inf bar is plotted only below the data point
+    plotlines2, caplines2, barcols2 = ax.errorbar(x,y,yerr=eb,uplims=True,inf_repr="bar")
+    assert np.all(barcols2[1].get_segments()[0]==[[1.,2.],[1.,0.]])
+```
+
+The third is when the `inf` bar is plotted **both above and below** the data point. We check that the capline position and length extends both to the top, and to the bottom of the axes frame.
+
+```
+    # Check if neither uplims nor lolims is specified, then inf bar is plotted 
+    # both above and below the data point
+    plotlines3, caplines3, barcols3 = ax.errorbar(x,y,yerr=eb,inf_repr="bar")
+    assert np.all(barcols3[1].get_segments()[0]==[[1.,2.],[1.,0.]])
+    assert np.all(barcols3[2].get_segments()[0]==[[1.,2.],[1,4.]])
+```
+
+Next, we check for the **x errorbar** cases. There are three subcases, which are symmetric to how the y errorbar subcases are handled.
+
+The first is when the `inf` bar is plotted **only to the right** of the data point. We check that the capline position and length extends to the right of the axes frame.
+
+```
+    # Cases for x errorbar, bar representation of inf
+    # Check if xlolims is True, then the inf symbol is plotted only to the right of the data point
+    plotlines4, caplines4, barcols4 = ax.errorbar(x,y,xerr=eb,xlolims=True,inf_repr="bar")
+    assert np.all(barcols4[1].get_segments()[0]==[[1.,2.],[2.,2.]])
+```
+
+The second is when the `inf` bar is plotted **only to the left** of the data point. We check that the capline position and length extends to the left of the axes frame.
+
+```
+    # Check if xuplims is True, then the inf bar is plotted only to the left of the data point
+    plotlines5, caplines5, barcols5 = ax.errorbar(x,y,xerr=eb,xuplims=True,inf_repr="bar")
+    assert np.all(barcols5[1].get_segments()[0]==[[1.,2.],[0.,2.]])
+```
+
+The third is when the `inf` bar is plotted **both to the left and to the right** of the data point. We check that the capline position and length extends both to the left, and to the right of the axes frame.
+
+```
+    # Check if neither xuplims nor xlolims is specified, then the inf bar is plotted
+    # both to the left and right of the data point
+    plotlines6, caplines6, barcols6 = ax.errorbar(x,y,xerr=eb,inf_repr="bar")
+    assert np.all(barcols6[1].get_segments()[0]==[[1.,2.],[0.,2.]])
+    assert np.all(barcols6[2].get_segments()[0]==[[1.,2.],[2.,2.]])
+```
+
+Lastly, we check the default case, when we do not specify the new `'bar'` representation of the `inf` errorbar. In this case, we expect that there is no errorbar, as with current behaviour.
+
+```
+    # Cases of default representation of inf, should display empty errorbar
+    plotlines7, caplines7, barcols7 = ax.errorbar(x,y,yerr=eb)
+    plotlines8, caplines8, barcols8 = ax.errorbar(x,y,xerr=eb)
+    assert len(barcols7)==1
+    assert len(barcols8)==1
+```
