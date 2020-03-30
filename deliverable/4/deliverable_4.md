@@ -6,7 +6,7 @@ Handout: https://www.utsc.utoronto.ca/~atafliovich/cscd01/project/deliverable4.p
 
 As mentioned in [**Deliverable 3**](../3/deliverable_3.md), we have chosen to implement the feature described in [**Issue 7876**](https://github.com/matplotlib/matplotlib/issues/7876)
 
-See below for the Documentation, Design, Testing, and Implementation of this feature. We have also provided a User Guide on the usage of this new feature.
+See below for the Documentation, Design, Testing, and Implementation of this feature. 
 
 ### [Documentation](./documentation.md) ###
 
@@ -18,6 +18,10 @@ See below for the Documentation, Design, Testing, and Implementation of this fea
 - ### [Acceptance Testing](./acceptance_testing.md) ###
 
 ### [Implementation](./implementation.md) ###
+
+We have also provided a User Guide on the usage of this new feature. This guide explains the new functionality added for errorbars, with an assumption that the user knows how the `Axes.errorbar()` method works.
+
+### [User Guide](./user_guide.md) ###
 
 ## Software Development Process
 
