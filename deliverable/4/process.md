@@ -45,7 +45,7 @@ Understanding the design choices would be difficult without knowledge of how the
 
 The commit marking the start of this phase was [feaf07f](https://github.com/CSCD01/team_04-project/commit/feaf07f09f181b388ed878fcc029087f0d622a7b). The state of the deliverable at the start of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/feaf07f09f181b388ed878fcc029087f0d622a7b/deliverable/4/deliverable_4.md).
 
-Here are some snapshots of the Trellow board throughout the **Design** phase.
+Here are some snapshots of the Trello board throughout the **Design** phase.
 
 ![trello 5](./img/trello_5.png)
 
@@ -54,3 +54,20 @@ Here are some snapshots of the Trellow board throughout the **Design** phase.
 ![trello 7](./img/trello_7.png)
 
 The commit marking the end of this phase was [abdf278](https://github.com/CSCD01/team_04-project/commit/abdf278ad10a9fc8b0ab0c927cf8bb9cc8a8f58a). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/abdf278ad10a9fc8b0ab0c927cf8bb9cc8a8f58a/deliverable/4/deliverable_4.md).
+
+## Testing
+
+During the Testing phase, we develop both Unit Tests, and Acceptance Tests. We carefully design **Unit Tests** so that each unit test is responsible for testing one core part of the feature. We distinguished three core parts, thus resulting in three unit tests. These unit tests were added to [`test_axes.py`](https://github.com/CSCD01-team04/matplotlib/blob/3205ff797038fb4662b843faceeaaec1f63acef9/lib/matplotlib/tests/test_axes.py).
+
+We created **Acceptance Tests** which are more of a visual test, so that the user is able to notice right away that they are looking at an `inf` or `nan` errorbar. We plotted different varieties and scenarios of the new representations we added. We also tested for backwards compatibility. 
+
+Since we are using a test driven development process, all the tests we have newly created are failing, before the implementation of the feature.
+
+The commit marking the start of this phase was [2e32de1](https://github.com/CSCD01/team_04-project/commit/2e32de16f880bc5c8d96130b712f70641027a15f). The state of the deliverable at the start of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/2e32de16f880bc5c8d96130b712f70641027a15f/deliverable/4/deliverable_4.md).
+
+Here are some snapshots of the Trello board throughout the **Testing** phase.
+
+![trello 8](./img/trello_8.png)
+
+![trello 9](./img/trello_9.png)
+
