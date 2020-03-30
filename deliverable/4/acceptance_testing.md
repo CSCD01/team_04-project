@@ -1,6 +1,4 @@
-# Testing
-
-## Acceptance Tests
+# Acceptance Tests
 
 To verify that the feature was properly implemented, the user can follow the steps below to replicate the different cases.
 
@@ -43,8 +41,6 @@ plt.show()
 
 The output should be the plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each.
 
-<!-- ![uat_1]() -->
-
 ## 2. `nan_repr` and `inf_repr` are omitted when calling `Axes.errorbar()`
 
 The purpose of this test is to support backwards compatibility. When the new parameters `nan_repr` and `inf_repr` are not specified, the errorbars for `nan` and `inf` are displayed as they were before the implementation of this feature, which will be considered the default value.
@@ -86,8 +82,6 @@ plt.show()
 ```
 
 The output should be the plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the third point, only the y errorbar should be displayed. In the fifth point, only the x errorbar should be displayed.
-
-<!-- ![uat_2]() -->
 
 ## 3. `nan` symbol plotted at a data point
 
@@ -361,7 +355,3 @@ plt.show()
 ```
 
 The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the first point, the x errorbar should appear only on the upper limit and at the second point the x errorbar should appear only on the lower limit. At the fourth point, the y errorbar should appear only on the upper limit and at the fifth point the y errorbar should appear only on the lower limit. 
-
-<!-- ![uat_7]() -->
-
-## Unit Tests

@@ -12,7 +12,10 @@ See below for the Documentation, Design, Testing, and Implementation of this fea
 
 ### [Design](./design.md) ###
 
-### [Testing](./testing.md) ###
+### Testing ###
+
+- ### [Unit Testing](./unit_testing.md) ###
+- ### [Acceptance Testing](./acceptance_testing.md) ###
 
 ### [Implementation](./implementation.md) ###
 
