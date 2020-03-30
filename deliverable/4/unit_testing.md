@@ -1,6 +1,8 @@
 # Unit Tests
 
-We have added some unit tests to the `Axes` test suite to ensure that our feature is working as wanted. Since our software development process is test driven, we add unit tests that are initially failing. Then, during the implementation of our feature, we run these tests to ensure that we are implementing the feature correctly.
+We have added some unit tests to the `Axes` test suite to ensure that our feature is working as wanted. These unit tests can be found in [`text_axes.py`](https://github.com/CSCD01/team_04-project/blob/abdf278ad10a9fc8b0ab0c927cf8bb9cc8a8f58a/deliverable/4/deliverable_4.md).
+
+Since our software development process is test driven, we add unit tests that are initially failing. Then, during the implementation of our feature, we run these tests to ensure that we are implementing the feature correctly.
 
 Our unit tests are testing the correctness of the three core parts of our new feature. 
 
