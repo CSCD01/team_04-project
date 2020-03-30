@@ -20,9 +20,11 @@ To set `nan_repr`, the user can add the parameter `nan_repr='symbol'` while sett
 
 Assuming the values of x, y, xerrors and yerrors are set up, the user can set the `nan_repr` in the following way:
 
-'''
+
+```
 plt.errorbar(x, y, xerr=xerrors, yerr=yerrors, nan_repr='symbol')
-'''
+```
+
 
 ### `inf_repr`
 
@@ -34,12 +36,12 @@ To set the `inf` error as a bar, the user can add the parameter `inf_repr='bar'`
 
 Assuming the values of x, y, xerrors and yerrors are set up, the user can set the `inf_repr` in the following way:
 
-'''
+```
 plt.errorbar(x, y, xerr=xerrors, yerr=yerrors, inf_repr='symbol')
-'''
+```
 
 or
 
-'''
+```
 plt.errorbar(x, y, xerr=xerrors, yerr=yerrors, inf_repr='bar')
-'''
+```
