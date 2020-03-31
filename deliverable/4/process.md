@@ -71,3 +71,10 @@ Here are some snapshots of the Trello board throughout the **Testing** phase.
 
 ![trello 9](./img/trello_9.png)
 
+![trello 10](./img/trello_10.png)
+
+![trello 11](./img/trello_11.png)
+
+![trello 12](./img/trello_12.png)
+
+The commit marking the end of this phase was [6958110](https://github.com/CSCD01/team_04-project/commit/69581105ef178a045215e085179b0e0b72e9c9cd). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/69581105ef178a045215e085179b0e0b72e9c9cd/deliverable/4/deliverable_4.md).
