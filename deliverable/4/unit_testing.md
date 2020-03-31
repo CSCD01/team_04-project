@@ -219,7 +219,7 @@ The third is when the `inf` symbol is plotted **both to the left and to the righ
     assert caplines6[1].get_marker()==0
 ```
 
-Lastly, we check the default case, when we do not specify the new `'symbol'` representation of the `inf` errorbar. In this case, we expect that there is no errorbar, as with current behaviour.
+Lastly, we check the default case, when we do not specify the new `'symbol'` representation of the `inf` errorbar. In this case, we expect that there is no errorbar (in particular, that the `'symbol'` representation is not used), as with current behaviour.
 
 ```
     # Cases of default representation of inf, should display empty errorbar
@@ -302,7 +302,7 @@ The third is when the `inf` bar is plotted **both to the left and to the right**
     assert np.all(barcols6[2].get_segments()[0]==[[1.,2.],[2.,2.]])
 ```
 
-Lastly, we check the default case, when we do not specify the new `'bar'` representation of the `inf` errorbar. In this case, we expect that there is no errorbar, as with current behaviour.
+Lastly, we check the default case, when we do not specify the new `'bar'` representation of the `inf` errorbar. In this case, we expect that there is no errorbar (in particular, that the `'bar'` representation is not used), as with current behaviour.
 
 ```
     # Cases of default representation of inf, should display empty errorbar
