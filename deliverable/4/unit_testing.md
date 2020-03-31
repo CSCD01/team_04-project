@@ -122,8 +122,8 @@ Lastly, we check the default case, when we do not specify the new representation
     # Cases of default representation of nan, should display empty errorbar
     plotlines7, caplines7, barcols7 = ax.errorbar(x,y,yerr=eb)
     plotlines8, caplines8, barcols8 = ax.errorbar(x,y,xerr=eb)
-    print(caplines7)
-    assert len(caplines7)==0 and len(caplines8)==0
+    assert len(caplines7)==0
+    assert len(caplines8)==0
 ```
 
 ## 2. The `'symbol'` representation of the `inf` errorbar. ##
