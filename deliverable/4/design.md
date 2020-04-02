@@ -55,19 +55,24 @@ There may be an additional parameter and a helper function in `Axes.errorbar()`,
 
 Here we will write in more detail how we plan to implement the changes described above. There, we detailed 4 changes we were going to make.
 
-1. Create a special symbol in the case of a `nan` error range.
-2. Allow the user to specify how the `inf` and `nan` error range is represented.
-3. Create a special symbol in the case of an `inf` error range.
-4. Handle the case of an `inf` error range by drawing an errorbar that extends to the upper and lower limits of the axes.
+1. Allow the user to specify how the `inf` and `nan` errorbar is represented.
+2. Create a special symbol for the `nan` errorbar.
+3. Create a special symbol for the `inf` errorbar.
+4. Handle the case of the `inf` errorbar by drawing an errorbar that extends to the upper and lower limits of the axes frame.
 
 We will go through each of these changes and how they would be implemented, below. Note that all of these changes are to be made in the `Axes.errorbar()` method.
+
+### Handling user choice of representing `inf` and `nan` errorbar ###
+
+This change would be in the `Axes.errorbar()` method. Firstly, we need to be prepared to handle an extra parameter, say `inf_repr`. This extra parameter is a `str` describing how the user wants the `inf` errorbar to be represented. For now, we only handle three possible values: `None`, `'bar'` or `'symbol'`. We would need to add documentation on the usage of `inf_repr` in the docstring. Depending on the value of `inf_repr`, we change the representation of the errorbar, as described below. To allow for backward compatibility, if `inf_repr=None`, or `nan_repr=None`, then we maintain the same representation as now.   
 
 ### Special symbol for `nan` errorbar ###
 
 We need to add a case to when handling `if xerr is not None` in [line 3366](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366). 
 
 For all data points with an errorbar of `nan`, then we add a special type of marker for that errorbar. We handle similarly for `if yerr is not None` in [line 3415](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3415). 
-We need to handle the `nan` case for all three sub-cases.
+
+We need to handle the `nan` case for all three cases under `if xerr is not None`:
 
 ```
 if noxlims.any() or len(noxlims) == 0:
@@ -75,38 +80,35 @@ if noxlims.any() or len(noxlims) == 0:
 ```
 if xlolims.any():
 ```
-and
 ```
 if xuplims.any():
 ```
 
-### Handling user choice of representing `inf` and `nan` errorbar ###
+We also need to handle the symmetric three cases under `if yerr is not None`:
 
-This change would be in the `Axes.errorbar()` method. Firstly, we need to be prepared to handle an extra parameter, say `inf_repr`. This extra parameter is a `str` describing how the user wants the `inf` errorbar to be represented. For now, we only handle three possible values: `None`, `'bar'` or `'symbol'`. We would need to add documentation on the usage of `inf_repr` in the docstring. Depending on the value of `inf_repr`, we change the representation of the errorbar, as described below. To allow for backward compatibility, if `inf_repr=None`, or `nan_repr=None`, then we maintain the same representation as now.   
+```
+if noylims.any() or len(noylims) == 0:
+```
+```
+if lolims.any():
+```
+```
+if uplims.any():
+```
 
 ### Special symbol for `inf` errorbar ###
 
-This change would be similar to handling the special symbol for a `nan` errorbar. This change would also be in the private method `Axes.errorbar.extract_err(data, err)`. Similarly to the above, we add another case checking for the value of `inf`.
+This change would be similar to handling the special symbol for a `nan` errorbar. Note that we only choose this representation if `inf_repr='symbol'`. As with the symbol for `nan`, we add a special type of marker for all data points with an errorbar of `inf` in the case of [`xerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366), and [`yerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3415) existing. 
 
-Note that we only choose this representation if `inf_repr='symbol'`. As with the symbol for `nan`, we add a special type of marker for all data points with an errorbar of `inf` in the case of [`xerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366), and [`yerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3415) existing.
+The changes would be made for the six cases described in the planned implementation for `nan` errorbar.
 
 ### Special long errorbar for `inf` ###
 
-This change would also be in the private method `Axes.errorbar.extract_err(data, err)`. We only choose this representation if `inf_repr='bar'`. To get an errorbar that extends to the lower and upper limits of the axes, we would need to calculate the upper and lower limits of `Axes`, and add a line that spans those values.
+We only choose this representation if `inf_repr='bar'`. To get an errorbar that extends to the lower and upper limits of the axes, we would need to calculate the upper and lower limits of `Axes`, and add a line that spans those values.
 
-Then, when handling the [`xerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366) and [`yerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3415) we provide a special errorbar extending for this range. We will omit the capline (if needed) to represent an unbounded error.
-We need to handle the `inf` case for all three sub-cases.
+Then, when handling the [`xerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3366) and [`yerr`](https://github.com/matplotlib/matplotlib/blob/master/lib/matplotlib/axes/_axes.py#L3415) we provide a special errorbar extending for this range. We will omit the capline (if needed) to represent an unbounded error. 
 
-```
-if noxlims.any() or len(noxlims) == 0:
-```
-```
-if xlolims.any():
-```
-and
-```
-if xuplims.any():
-```
+The changes would be made for the six cases described in the planned implementation for `nan` errorbar.
 
 ## Time Estimate
 

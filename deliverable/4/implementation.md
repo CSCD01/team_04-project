@@ -29,7 +29,6 @@ if noxlims.any() or len(noxlims) == 0
 ```
 if xlolims.any()
 ```
-and 
 ```
 if xuplims.any()
 ```
@@ -42,7 +41,6 @@ if noylims.any() or len(noylims) == 0
 ```
 if lolims.any()
 ```
-and 
 ```
 if uplims.any()
 ```
