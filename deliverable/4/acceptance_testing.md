@@ -41,6 +41,8 @@ plt.show()
 
 The output should be the plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each.
 
+![UAT1](./img/7876_UAT_1.png)
+
 ## 2. `nan_repr` and `inf_repr` are omitted when calling `Axes.errorbar()`
 
 The purpose of this test is to support backwards compatibility. When the new parameters `nan_repr` and `inf_repr` are not specified, the errorbars for `nan` and `inf` are displayed as they were before the implementation of this feature, which will be considered the default value.
@@ -83,6 +85,8 @@ plt.show()
 
 The output should be the plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the third point, only the y errorbar should be displayed. In the fifth point, only the x errorbar should be displayed.
 
+![UAT2](./img/7876_UAT_2.png)
+
 ## 3. `nan` symbol plotted at a data point
 
 The purpose of this test is to check the correctness of the `'symbol'` representation of a `nan` errorbar.
@@ -121,7 +125,9 @@ plt.show()
 
 ```
 
-The output should be a plot of a sinusoidal function formed by 6 data points in the x range from `0` to `pi/2`. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the third point, the x errorbar should be a dotted line of length 0.1, with a dot in the middle. 
+The output should be a plot of a sinusoidal function formed by 6 data points in the x range from `0` to `pi/2`. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the third point, the x errorbar should have a small rhombus at the datapoint horizontally oriented.
+
+![UAT3](./img/7876_UAT_3.png)
 
 ## 4. `inf` symbol plotted at a data point
 
@@ -163,7 +169,9 @@ plt.show()
 
 ```
 
-The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the fourth point, the x errorbar should use the `'symbol'` representation for `inf`, horizontally oriented. Similarly at the fifth point, the y errorbar should use the `'symbol'` representation for `inf`, vertically oriented.
+The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the fourth point, the x errorbar should be a short thin line horizontally oriented. Similarly at the fifth point, the y errorbar should be a short thin line vertically oriented.
+
+![UAT4](./img/7876_UAT_4.png)
 
 ## 5. `inf` bar plotted at a data point
 
@@ -204,7 +212,9 @@ plt.errorbar(x, y, xerr=xerrors, yerr=yerrors, ecolor='purple', inf_repr='bar')
 plt.show()
 ```
 
-The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the fourth point, the x errorbar should use the `'bar'` representation for `inf`, horizontally oriented. Similarly at the fifth point, the y errorbar should use the `'bar'` representation for `inf`, vertically oriented.
+The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the fourth point, the x errorbar should a have a horizontal line passing through the data point, where the size of the line should be the width of the plot. Similarly at the fifth point, the y errorbar should have a vertical line passing through the data point, where the size of the line should be the height of the plot.
+
+![UAT5](./img/7876_UAT_5.png)
 
 ## 6. `nan` symbol and `inf` symbol plotted at data points
 
@@ -236,10 +246,10 @@ yerrors = np.array([0.1] * 6)
 xerrors[1] = np.nan
 # Change the second y errorbar to be inf
 yerrors[1] = np.inf
-# Change the third x errorbar to be nan
-xerrors[2] = np.nan
-# Change the fourth y errorbar to be inf
-yerrors[3] = np.inf
+# Change the third x errorbar to be inf
+xerrors[2] = np.inf
+# Change the fourth y errorbar to be nan
+yerrors[3] = np.nan
 
 # Initializes a figure
 plt.figure()
@@ -252,7 +262,9 @@ plt.show()
 
 ```
 
-The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the second point, the y errorbar should use the `'symbol'` representation for `inf`, vertically oriented, and the x errorbar should use the `'symbol'` representation for `nan`,  horizontally oriented. At the third point, the x errorbar should use the `'symbol'` representation for `nan`. At the fourth point, the y errorbar should use the `'symbol'` representation for `inf`. 
+The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the second point, the y errorbar should have a short thin vertical line, and the x errorbar should have a small rhombus horizontally oriented. At the third point, the x errorbar should have a short thin horizontal line. At the fourth point, the y errorbar should have a small rhombus vertically oriented.
+
+![UAT6](./img/7876_UAT_6.png)
 
 ## 7. `nan` symbol and `inf` bar plotted at data points
 
@@ -300,58 +312,6 @@ plt.show()
 
 ```
 
-The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the second point, the y errorbar should use the `'bar'` representation for `inf`, vertically oriented, and the x errorbar should use the `'symbol'` representation for `nan`,  horizontally oriented. At the third point, the x errorbar should use the `'symbol'` representation for `nan`. At the fourth point, the y errorbar should use the `'bar'` representation for `inf`. 
+The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the second point, the y errorbar should have a vertical line passing through the data point, where the size of the line should be the height of the plot, and the x errorbar should have a small rhombus horizontally oriented. At the third point, the x errorbar should have a small rhombus horizontally oriented. At the fourth point, the y errorbar should have a vertical line passing through the data point, where the size of the line should be the height of the plot. 
 
-## 8. `nan` and `inf` with respect to `uplims` and `lolims`
-
-The purpose of this test is to check the correctness of the `'symbol'` representation of both a `nan` and `inf` errorbars, when plotted on an upper or lower limit, to show that both can appear only on one side of the graph.
-
-3. Make the bars for all x and y data points 0.1 by initializing two arrays of size 6 with values of 0.1. Name the arrays `xerrors` and `yerrors`, use `np.array([0.1] * 6)`.
-4. Change the first x errorbar to be nan and the second to be inf. Use `xerrors[0] = np.nan` and `xerrors[1] = np.inf`. Change the fourth y errorbar to be inf and the fifth to be nan. Use `yerrors[3] = np.inf` and `yerrors[4] = np.nan`.
-5. Set the upper and lower limits for the errors by initializing four arrays of 6 boolean values each. We can use the following format for setting the limits: `np.array([1, 0, 0, 0, 0, 0], dtype=bool)`.
-6. Initialize a `Figure` using `plt.figure()`.
-7. Plot the errorbars for x and y and the corresponding limits, and color them purple. Use the `'symbol'` representation for both `nan` and `inf` errorbars. Use `plt.errorbar(x, y, xerr=xerrors, yerr=yerrors, xlolims=xlolims, xuplims=xuplims, lolims=lolims, uplims=uplims, ecolor='purple', nan_repr='symbol', inf_repr='bar')`.
-8. Finally, write `plt.show()` to display the graph.
-
-```
-import matplotlib.pyplot as plt
-import numpy as np
-
-# Initialize the range of x points from 0 to pi/2 with
-# a step of 0.5, and form a sinusoidal function
-x = np.linspace(0, np.pi/2, 6)
-y = np.sin(x)
-
-# Make all the horizonal and vertical errors
-# for every point be 0.1
-xerrors = np.array([0.1] * 6)
-yerrors = np.array([0.1] * 6)
-
-# Change the first x errorbar to be nan and the second to be inf
-xerrors[0] = np.nan
-xerrors[1] = np.inf
-
-# Change the fourth y errorbar to be inf and the fifth to be nan
-yerrors[3] = np.inf
-yerrors[4] = np.nan
-
-# Set the first x errorbar to be upper limit aand the second one low limit
-xuplims = np.array([1, 0, 0, 0, 0, 0], dtype=bool)
-xlolims = np.array([0, 1, 0, 0, 0, 0], dtype=bool)
-
-# Set the fourth y errorbar to be upper limit aand the fifth one low limit
-uplims = np.array([0, 0, 0, 1, 0, 0], dtype=bool)
-lolims = np.array([0, 0, 0, 0, 1, 0], dtype=bool)
-
-# Initializs a figure
-plt.figure()
-
-# Plots errorbars and the corresponding limits in the line and color them purple
-plt.errorbar(x, y, xerr=xerrors, yerr=yerrors, xlolims=xlolims, xuplims=xuplims, lolims=lolims, uplims=uplims, ecolor='purple',nan_repr='symbol', inf_repr='symbol'))
-
-# Display the graph
-plt.show()
-
-```
-
-The output should be a plot of a sinusoidal function formed by 6 data points in the x range from 0 to pi/2. Each data point should have two purple errorbars, one horizontal and one vertical, of 0.1 length each. At the first point, the x errorbar should appear only on the upper limit and at the second point the x errorbar should appear only on the lower limit. At the fourth point, the y errorbar should appear only on the upper limit and at the fifth point the y errorbar should appear only on the lower limit. 
+![UAT7](./img/7876_UAT_7.png)
