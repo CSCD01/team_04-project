@@ -85,10 +85,10 @@ The first is when the `nan` symbol is plotted **only to the right** of the data 
     # Cases for x errorbar, symbol representation of nan
     # Check if xlolims is True, then the nan symbol is plotted only to the right of the data point
     plotlines4, caplines4, barcols4 = ax.errorbar(x, y, xerr=eb, xlolims=True, nan_repr="symbol")
-    assert len(caplines4[0].get_xdata())>1
-    assert caplines4[1].get_xdata()[0]==1
-    assert caplines4[1].get_ydata()[0]==2
-    assert caplines4[1].get_marker()==9
+    assert len(caplines4[0].get_xdata()) > 1
+    assert caplines4[1].get_xdata()[0] == 1
+    assert caplines4[1].get_ydata()[0] == 2
+    assert caplines4[1].get_marker() == 9
 ```
 
 The second is when the `nan` symbol is plotted **only to the left** of the data point. We check that the capline position and marker is the one we have chosen.
@@ -96,10 +96,10 @@ The second is when the `nan` symbol is plotted **only to the left** of the data 
 ```
     # Check if xuplims is True, then the nan symbol is plotted only to the left of the data point
     plotlines5, caplines5, barcols5 = ax.errorbar(x, y, xerr=eb, xuplims=True, nan_repr="symbol")
-    assert len(caplines5[0].get_xdata())>1
-    assert caplines5[1].get_xdata()[0]==1
-    assert caplines5[1].get_ydata()[0]==2
-    assert caplines5[1].get_marker()==8
+    assert len(caplines5[0].get_xdata()) > 1
+    assert caplines5[1].get_xdata()[0] == 1
+    assert caplines5[1].get_ydata()[0] == 2
+    assert caplines5[1].get_marker() == 8
 ```
 
 The third is when the `nan` symbol is plotted **both to the left and to the right** of the data point. We check that the capline position and marker is the one we have chosen.
@@ -108,12 +108,12 @@ The third is when the `nan` symbol is plotted **both to the left and to the righ
     # Check if neither xuplims nor xlolims is specified, then the nan symbol is plotted
     # both to the left and right of the data point
     plotlines6, caplines6, barcols6 = ax.errorbar(x, y, xerr=eb, nan_repr="symbol")
-    assert caplines6[0].get_xdata()[0]==1
-    assert caplines6[0].get_ydata()[0]==2
-    assert caplines6[0].get_marker()==9
-    assert caplines6[1].get_xdata()[0]==1
-    assert caplines6[1].get_ydata()[0]==2
-    assert caplines6[1].get_marker()==8
+    assert caplines6[0].get_xdata()[0] == 1
+    assert caplines6[0].get_ydata()[0] == 2
+    assert caplines6[0].get_marker() == 9
+    assert caplines6[1].get_xdata()[0] == 1
+    assert caplines6[1].get_ydata()[0] == 2
+    assert caplines6[1].get_marker() == 8
 ```
 
 Lastly, we check the default case, when we do not specify the new representation of the `nan` errorbar. In this case, we expect that there is no errorbar, as with current behaviour.
@@ -138,7 +138,7 @@ def test_errorbar_inf_symbol():
     x = np.arange(3)
     y = 2*x # Plot a linear function
     eb = np.array([0.5] * 3)
-    eb[1]=np.inf # Errorbar at position 1 is inf
+    eb[1] = np.inf # Errorbar at position 1 is inf
 ```
 
 Next, we check for the **y errorbar** cases. There are three subcases. 
@@ -241,7 +241,7 @@ def test_errorbar_inf_bar():
     x = np.arange(3)
     y = 2*x # Plot a linear function
     eb = np.array([0.5] * 3)
-    eb[1]=np.inf # Errorbar at position 1 is inf
+    eb[1] = np.inf # Errorbar at position 1 is inf
 ```
 
 Next, we check for the **y errorbar** cases. There are three subcases. 
@@ -298,8 +298,8 @@ The third is when the `inf` bar is plotted **both to the left and to the right**
     # Check if neither xuplims nor xlolims is specified, then the inf bar is plotted
     # both to the left and right of the data point
     plotlines6, caplines6, barcols6 = ax.errorbar(x, y, xerr=eb, inf_repr="bar")
-    assert np.all(barcols6[1].get_segments()[0]==[[1., 2.],[-0.5, 2.]])
-    assert np.all(barcols6[2].get_segments()[0]==[[1., 2.],[2.5, 2.]])
+    assert np.all(barcols6[1].get_segments()[0] == [[1., 2.],[-0.5, 2.]])
+    assert np.all(barcols6[2].get_segments()[0] == [[1., 2.],[2.5, 2.]])
 ```
 
 Lastly, we check the default case, when we do not specify the new `'bar'` representation of the `inf` errorbar. In this case, we expect that there is no errorbar (in particular, that the `'bar'` representation is not used), as with current behaviour.
