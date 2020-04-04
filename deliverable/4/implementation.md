@@ -50,6 +50,8 @@ Each of the above six cases would need to accommodate three special consideratio
 - `inf_repr='symbol'`
 - `inf_repr='bar'`
 
+### `nan_inf_lims()` ###
+
 To prevent duplication of code, we defined a private method
 `nan_inf_lims` that appends the appropriate marker symbol (or bar) with the correct orientation and position, to `caplines` and `barcols`. Below is the private helper method. It takes the following parameters:
 
@@ -105,6 +107,8 @@ Before explaining the six cases, there are two other helper
 methods to note, which are responsible for determining the
 length of the `'bar'` representation of `inf`. 
 
+### `get_extent()` ###
+
 The first method is `get_extent()`, which takes two parameters
 `dir`, and `x_or_y`. It calculates the maximum/minimum data point
 based on the specified direction (up, down, left, or right). This 
@@ -136,6 +140,8 @@ def get_extent(x_or_y, dir):
         return np.nanmax(arr[arr != np.inf]) + get_extent_err('max', err)
 ```
 
+### `get_extent_err()` ###
+
 The second method is `get_extent_err()`, which takes the two 
 parameters `dir` and `err`. It calculates the maximum/minimum 
 errorbar based on the specified error range `err`.
@@ -164,7 +170,10 @@ def get_extent_err(dir, err):
 
 Below are the six cases.
 
-**Case 1**: applying the errorbars **to the left** and **to the right** of the data point.
+### Case 1 ###
+
+Applying the errorbars **to the left** and **to the right** of the data point.
+
 ```
 if noxlims.any() or len(noxlims) == 0:
     ...
@@ -174,7 +183,9 @@ if noxlims.any() or len(noxlims) == 0:
                  mlines.CARETLEFTBASE, mlines.TICKLEFT)
 ```
 
-**Case 2**: applying the errorbars **only to the left** of the data point. 
+### Case 2 ###
+
+Applying the errorbars **only to the left** of the data point. 
 
 ```
 if xlolims.any():
@@ -190,7 +201,9 @@ if xlolims.any():
                  marker, inf_marker)
 ```
 
-**Case 3**: applying the errorbars **only to the right** of the data point.
+### Case 3 ###
+
+Applying the errorbars **only to the right** of the data point.
 
 ```
 if xuplims.any():
@@ -206,7 +219,9 @@ if xuplims.any():
                  marker, inf_marker)
 ```
 
-**Case 4**: applying the errorbars **above** and **below** the data point.
+### Case 4 ###
+
+Applying the errorbars **above** and **below** the data point.
 
 ```
 if noylims.any() or len(noylims) == 0:
@@ -217,7 +232,9 @@ if noylims.any() or len(noylims) == 0:
                  mlines.CARETUPBASE, mlines.TICKUP)
 ```
 
-**Case 5**: applying the errorbars **only above** the data point. 
+### Case 5 ###
+
+Applying the errorbars **only above** the data point. 
 
 ```
 if lolims.any():
@@ -234,7 +251,9 @@ if lolims.any():
 
 ```
 
-**Case 6**: applying the errorbars **only below** the data point. 
+### Case 6 ###
+
+Applying the errorbars **only below** the data point. 
 
 ```
 if uplims.any():
