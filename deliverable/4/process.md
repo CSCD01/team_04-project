@@ -61,6 +61,8 @@ During the Testing phase, we develop both Unit Tests, and Acceptance Tests. We c
 
 We created **Acceptance Tests** which are more of a visual test, so that the user is able to notice right away that they are looking at an `inf` or `nan` errorbar. We plotted different varieties and scenarios of the new representations we added. We also tested for backwards compatibility. 
 
+**Some Notes:** During the Testing phase, we encountered some erroneous descriptions in the Design documentation, and have updated our Design Choices appropriately. As part of the process, we had to revise some of the tests if necessary. Fortunately, it wasn't.
+
 Since we are using a test driven development process, all the tests we have newly created are failing, before the implementation of the feature.
 
 The commit marking the start of this phase was [2e32de1](https://github.com/CSCD01/team_04-project/commit/2e32de16f880bc5c8d96130b712f70641027a15f). The state of the deliverable at the start of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/2e32de16f880bc5c8d96130b712f70641027a15f/deliverable/4/deliverable_4.md).
@@ -78,3 +80,33 @@ Here are some snapshots of the Trello board throughout the **Testing** phase.
 ![trello 12](./img/trello_12.png)
 
 The commit marking the end of this phase was [6958110](https://github.com/CSCD01/team_04-project/commit/69581105ef178a045215e085179b0e0b72e9c9cd). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/69581105ef178a045215e085179b0e0b72e9c9cd/deliverable/4/deliverable_4.md).
+
+## Implementation Phase
+
+During the Implementation phase, we develop the feature in the source code. We adhere to the coding standards of matplotlib, ensuring that we follow the code style requirements (PEP 8), and that we have included docstrings describing any new functionality we have. The implementation was added to [`_axes.py`](https://github.com/CSCD01-team04/matplotlib/blob/deliverable_4_7876/lib/matplotlib/axes/_axes.py).
+
+We have detailed how we implemented our feature in **Code Changes**, which describes where the code changes were made. We have added new private helper methods and have described those as well.
+
+**Some Notes**: During the Implementation phase, we had to move back and forth between the Testing phase, specifically to update the unit tests. The ideas around the unit tests remained the same, but the tests were not examining the affected components properly. As we updated the unit tests, the implementation would fail those tests again and we would have to update our code.
+
+The commit marking the start of this phase was [b79c0d9](https://github.com/CSCD01/team_04-project/commit/b79c0d9944fb7692e85efbf3c0b7c2d324884d4e). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/b79c0d9944fb7692e85efbf3c0b7c2d324884d4e/deliverable/4/deliverable_4.md).
+
+![trello 13](./img/trello_13.png)
+
+![trello 14](./img/trello_14.png)
+
+![trello 15](./img/trello_15.png)
+
+The commit marking the end of the second Testing phase was [a70531a](https://github.com/CSCD01/team_04-project/commit/a70531a810337f6e7d6859120476c73867c86a78). The state of the deliverable at the end of the second Testing phase can be found [here](https://github.com/CSCD01/team_04-project/blob/a70531a810337f6e7d6859120476c73867c86a78/deliverable/4/deliverable_4.md)
+
+![trello 16](./img/trello_16.png)
+
+![trello 17](./img/trello_17.png)
+
+The commit marking the start of this phase (Implementation) was [58dfc2b](https://github.com/CSCD01/team_04-project/commit/58dfc2be9fb6d8f6b6c68fb75e9283ada61ab386). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/58dfc2be9fb6d8f6b6c68fb75e9283ada61ab386/deliverable/4/deliverable_4.md).
+
+
+
+
+
+
