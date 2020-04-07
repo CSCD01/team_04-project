@@ -6,16 +6,15 @@ Handout: https://www.utsc.utoronto.ca/~atafliovich/cscd01/project/deliverable4.p
 
 As mentioned in [**Deliverable 3**](../3/deliverable_3.md), we have chosen to implement the feature described in [**Issue 7876**](https://github.com/matplotlib/matplotlib/issues/7876)
 
-See below for the Documentation, Design, Testing, and Implementation of this feature. 
+See below for the Documentation, Design, Testing (Unit Tests and Acceptance Tests), and Implementation of this feature. 
 
 ### [Documentation](./documentation.md) ###
 
 ### [Design](./design.md) ###
 
-### Testing ###
+### [Unit Testing](./unit_testing.md) ###
 
-- ### [Unit Testing](./unit_testing.md) ###
-- ### [Acceptance Testing](./acceptance_testing.md) ###
+### [Acceptance Testing](./acceptance_testing.md) ###
 
 ### [Implementation](./implementation.md) ###
 
