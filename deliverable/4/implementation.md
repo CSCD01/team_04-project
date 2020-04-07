@@ -71,14 +71,14 @@ def nan_inf_lims(lim_vals, x_or_y, bar_end,
             caplines.append(mlines.Line2D([x[i]], [y[i]], 
                             marker=nan_marker, **eb_cap_style))
         if (inf_repr and np.isinf(lim_vals[i])):
-            if inf_repr=="bar":
-                if x_or_y=='x':
-                    barcols.append(self.hlines([y[i]],[x[i]], 
+            if inf_repr == "bar":
+                if x_or_y == 'x':
+                    barcols.append(self.hlines([y[i]], [x[i]], 
                                    bar_end, **eb_lines_style))
-                elif x_or_y=='y':
-                    barcols.append(self.vlines([x[i]],[y[i]], 
+                elif x_or_y == 'y':
+                    barcols.append(self.vlines([x[i]], [y[i]], 
                                    bar_end, **eb_lines_style))
-            elif inf_repr=="symbol":
+            elif inf_repr == "symbol":
                 caplines.append(mlines.Line2D([x[i]], [y[i]], 
                                 marker=inf_marker, **eb_cap_style))
 ```
@@ -135,9 +135,11 @@ def get_extent(x_or_y, dir):
         err = np.array([0])
 
     if dir == 'min':
-        return np.nanmin(arr[arr != -np.inf]) - get_extent_err('min', err)
+        return np.nanmin(arr[arr != -np.inf]) - get_extent_err(
+            'min', err)
     elif dir == 'max':
-        return np.nanmax(arr[arr != np.inf]) + get_extent_err('max', err)
+        return np.nanmax(arr[arr != np.inf]) + get_extent_err(
+            'max', err)
 ```
 
 ### `get_extent_err()` ###
@@ -192,10 +194,10 @@ if xlolims.any():
     ...
     if self.xaxis_inverted():
         marker = mlines.CARETLEFTBASE
-        inf_marker=mlines.TICKLEFT
+        inf_marker = mlines.TICKLEFT
     else:
         marker = mlines.CARETRIGHTBASE
-        inf_marker=mlines.TICKRIGHT
+        inf_marker = mlines.TICKRIGHT
     ...
     nan_inf_lims(left, 'x', get_extent('x', 'max'), 
                  marker, inf_marker)
@@ -241,10 +243,10 @@ if lolims.any():
     ...
     if self.yaxis_inverted():
         marker = mlines.CARETDOWNBASE
-        inf_marker=mlines.TICKDOWN
+        inf_marker = mlines.TICKDOWN
     else:
         marker = mlines.CARETUPBASE
-        inf_marker=mlines.TICKUP
+        inf_marker = mlines.TICKUP
     ...
     nan_inf_lims(upper, 'y', get_extent('y', 'max'), 
                 marker, inf_marker)
@@ -260,10 +262,10 @@ if uplims.any():
     ...
     if self.yaxis_inverted():
         marker = mlines.CARETUPBASE
-        inf_marker=mlines.TICKUP
+        inf_marker = mlines.TICKUP
     else:
         marker = mlines.CARETDOWNBASE
-        inf_marker=mlines.TICKDOWN
+        inf_marker = mlines.TICKDOWN
     ...
     nan_inf_lims(lower, 'y', get_extent('y', 'min'), 
                  marker, inf_marker)
