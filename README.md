@@ -19,6 +19,7 @@
 1. [Deliverable 1](./deliverable/1/deliverable_1.md)
 2. [Deliverable 2](./deliverable/2/deliverable_2.md)
 3. [Deliverable 3](./deliverable/3/deliverable_3.md)
+4. [Deliverable 4](./deliverable/4/deliverable_4.md)
 
 ## Dependencies
 - Docker (newest version is best)
