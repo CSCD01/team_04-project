@@ -103,7 +103,11 @@ The commit marking the end of the second Testing phase was [a70531a](https://git
 
 ![trello 17](./img/trello_17.png)
 
-The commit marking the start of this phase (Implementation) was [58dfc2b](https://github.com/CSCD01/team_04-project/commit/58dfc2be9fb6d8f6b6c68fb75e9283ada61ab386). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/58dfc2be9fb6d8f6b6c68fb75e9283ada61ab386/deliverable/4/deliverable_4.md).
+![trello 18](./img/trello_18.png)
+
+![trello 19](./img/trello_19.png)
+
+The commit marking the start of this phase (Implementation) was [f001e6d](https://github.com/CSCD01/team_04-project/commit/f001e6d83cd1af9a0a945c5bd972b61c76a498bc). The state of the deliverable at the end of this phase can be found [here](https://github.com/CSCD01/team_04-project/blob/f001e6d83cd1af9a0a945c5bd972b61c76a498bc/deliverable/4/deliverable_4.md).
 
 
 
